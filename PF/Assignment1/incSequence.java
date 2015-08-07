@@ -3,7 +3,7 @@ package assignment1;
 public class incSequence {
 	public static void main(String[] args) 
 	{
-		int input[]={1,3,4,2,5,6,7,8};
+		int input[]={1,3,4,2,4,5,6,1,7,8};
 		incSequence ob=new incSequence();
 		int output[]=ob.longestSequence(input);
 		int i;
@@ -11,14 +11,14 @@ public class incSequence {
 			System.out.print(output[i]);
 
 	}
-	public int[] longestSequence(int input[])
+	public int[] longestSequence(int input[])	//method to find longest increasing seq in given array
 	{
-		int len=input.length;
-		int arr1[]=new int[len];
-		int arr2[]=new int[len];
-		int count1=1,count2=1;
-		int k=0;
-		int i,j,l;
+		int len=input.length;	//variable to hold total no of elements in given array
+		int arr1[]=new int[len]; //array 1 to hold inc seq
+		int arr2[]=new int[len]; //array 2 to hold inc seq
+		int count1=1,count2=1; //variable to hold no. of elements in increasing seqs
+		int k=0;	//loop counter
+		int i,j,l;	//loop counter
 		arr1[k]=input[0];
 		for(i=0;i<len;)
 		{
