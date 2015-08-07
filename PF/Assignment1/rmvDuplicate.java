@@ -1,10 +1,10 @@
 package assignment1;
 
 public class rmvDuplicate {
-	public int[] removeDuplicate(int input[])
+	public int[] removeDuplicate(int input[])	//method to remove duplicates from given array
 	{
-		int n=input.length-1;
-		int i,j,k;
+		int n=input.length-1; //variable to hold length of array
+		int i,j,k;	//loop counters
 		for(i=0;i<n;i++)
 		{
 			for(j=i+1;j<=n;j++)
@@ -31,7 +31,7 @@ public class rmvDuplicate {
 	public static void main(String[] args) 
 	{
 		int[] output;
-		int[] input={1,2,4,2,3};
+		int[] input={1,2,2,4,2,3,2,4};
 		rmvDuplicate ob=new rmvDuplicate();
 		output=ob.removeDuplicate(input);
 		for(int i=0;i<output.length;i++)

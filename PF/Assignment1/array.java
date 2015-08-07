@@ -1,10 +1,11 @@
 package assignment1;
 
 public class array {
-	public int checkOrder(int arr[])
+	public int checkOrder(int arr[])	//checks the order of the given array
 	{
-		int len,flag=-1,i;
-		len=arr.length;
+		int len,flag=-1;
+		int i;	//loop counter
+		len=arr.length;	//holds length of array
 		for(i=1;i<len;i++)
 		{
 			if(arr[i]>=arr[i-1] && flag!=2)
@@ -28,7 +29,8 @@ public class array {
 	}
 	public static void main(String args[])
 	{
-		int input[]={1,3,4,5,7,5},value;
+		int input[]={8,5,3,2,1};
+		int value;	//variable to check the return value of the function
 		array ob=new array();
 		value=ob.checkOrder(input);
 		if(value==1)

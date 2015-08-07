@@ -1,9 +1,10 @@
 package assignment1;
 
 public class binaryToOctal {
-	public int convertBinaryToOctal(int bin)
+	public int convertBinaryToOctal(int bin)	//method to convert binary no to octal no
 	{
-		int octal=0,i=0,count=0;
+		int octal=0,count=0;
+		int i=0;	//loop counter
 		while(bin!=0)
 		{
 			octal=(int)((((bin%10)*Math.pow(2, i))*Math.pow(10,count))+octal);
@@ -22,7 +23,7 @@ public class binaryToOctal {
 	{
 		int octal;
 		binaryToOctal ob=new binaryToOctal();
-		octal=ob.convertBinaryToOctal(110101);
+		octal=ob.convertBinaryToOctal(101110101);
 		System.out.println(octal);
 	}
 	
