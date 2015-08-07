@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Pattern1 {
 	public String space(int row,int n)	//This method creates row of spaces
 	{
-		int i;
-		String str="";
+		int i;	//loop counter
+		String str="";	//holds row of spaces
 		for(i=row;i<n;i++)
 		{
 			str+=" ";
@@ -15,9 +15,9 @@ public class Pattern1 {
 	}
 	public String numbers(int row,int n)	//This method creates row of nos
 	{
-		int i;
-		String str="";				//creating row of increasing no
-		for(i=1;i<=row;i++)
+		int i;	//loop counter
+		String str="";			//holds row of numbers		
+		for(i=1;i<=row;i++)		//creating row of increasing no
 		{
 			str+=i;
 		}
@@ -29,8 +29,8 @@ public class Pattern1 {
 	}
 	public String printWholePyramid(int n)	//This method creates complete Pyramid
 	{
-		int j;
-		String str="";
+		int j;	//loop counter
+		String str="";	//holds complete pattern 
 		for(j=1;j<=n;j++)		// creating upward pyramid
 		{
 			str+=space(j,n);
@@ -49,7 +49,7 @@ public class Pattern1 {
 	public static void main(String args[])
 	{
 		int n;	//variable for no. of rows
-		String str="";
+		String str="";	//holds the returned pattern from function
 		Scanner sc=new Scanner(System.in);
 		System.out.print("Enter No. of Rows:");
 		do

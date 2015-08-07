@@ -3,11 +3,11 @@ package assignment2;
 import java.util.Scanner;
 
 public class Pattern2 {
-	public String space(int row,int n)
+	public String space(int row,int n)	//method to create row of spaces
 	{
-		int i;
-		String str="";
-		//creating row of spaces
+		int i;		//loop counter
+		String str="";		//holds row of spaces
+		
 		for(i=1;i<=row-1;i++)
 		{
 			str+=" ";
@@ -15,11 +15,11 @@ public class Pattern2 {
 		return str;
 		
 	}
-	public String numbers(int row,int n)
+	public String numbers(int row,int n)	//method to create row of numbers
 	{
-		int i;
-		String str="";
-		//creating row of numbers
+		int i;		//loop counter
+		String str="";		//holds row of numbers
+		
 		for(i=1;i<=n-row+1;i++)
 		{
 			str+=i;
@@ -29,8 +29,8 @@ public class Pattern2 {
 	}
 	public String printWholePyramid(int n)
 	{
-		int j;
-		String str="";
+		int j;	//loop counter
+		String str="";	//holds complete pattern
 		//creating pattern
 		for(j=1;j<=n;j++)
 		{
@@ -42,8 +42,8 @@ public class Pattern2 {
 	}
 	public static void main(String args[])
 	{
-		int n;
-		String str="";
+		int n;		//variable for no. of rows
+		String str="";	//holds the returned pattern from function
 		Scanner sc=new Scanner(System.in);
 		System.out.print("Enter No. of Rows:");
 		do
