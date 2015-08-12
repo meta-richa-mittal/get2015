@@ -11,14 +11,14 @@ import java.util.Scanner;
  * 		Function 2: To find GCD using Recursive Call
  * 		Function 3: To finf Largest Digit in a Number using Recursive Call
  * 		Function 4: Main Function
- * Input: Two numbers no1 and no2 ( eg. 17,5)
+ * Input: Three numbers no1, no2 and num ( eg. 17,5,46687)
  * 		Function 1: no1,no2
  * 		Function 2: no1,no2
- * 		Function 3: no1
+ * 		Function 3: num
  * Output: 
  * 		Function 1: rem (o/p: 2)
  * 		Function 2: gcd (o/p: 1)
- * 		Function 3: largest (o/p: 7)
+ * 		Function 3: largest (o/p: 8)
  */
 public class Assignment1 {
 	/**
@@ -132,14 +132,14 @@ public class Assignment1 {
 	 * @param x: any number
 	 * @return maximum digit in the x
 	 */
-	public int largestDigit(int x)
+	public int largestDigit(long x)
 	{
 		x=Math.abs(x);				// makes given number positive
 		if(x!=0)
 		{
 			if(x%10>largest)
 			{
-				largest=x%10;
+				largest=(int)x%10;
 			}
 			return largestDigit(x/10);
 		}
@@ -153,27 +153,52 @@ public class Assignment1 {
 	 */
 	public static void main(String args[])
 	{
+		int i;
+		long num;
 		int no1,no2;						// input variables
 		int rem,gcd,largest;				// output variables
 		Scanner sc=new Scanner(System.in);
-		System.out.print("Enter two no's:");
-		no1=sc.nextInt();			
-		no2=sc.nextInt();
 		Assignment1 ob=new Assignment1();	// creating object of our class
-		rem=ob.rem(no1, no2);				// calling first function to find remainder
-		gcd=ob.gcd(no1, no2);				// calling second function to find GCD
-		largest=ob.largestDigit(no1);		// calling third function to find largest digit
-		if(rem==-1)
+		do
 		{
-			System.out.println("Divide by 0 is not possible.");
-		}
-		else
-		{
-			System.out.println("Remainder when "+no1+" is divided by "+ no2+ " is:"+rem);
-		}
-		System.out.println("GCD of given 2 no.'s is:"+gcd);
-		System.out.println("Largest digit in the given No. "+no1+ " is:"+largest);
+			System.out.print("Enter 1 to find remainder of two no's.\nEnter 2 to find gcd of two no's.\nEnter 3 to find largest digit in a no.\nEnter 0 to exit.");
+			i=sc.nextInt();
+			switch(i)
+			{
+				case 1:
+					System.out.print("Enter two no's:");
+					no1=sc.nextInt();			
+					no2=sc.nextInt();
+					rem=ob.rem(no1, no2);				// calling first function to find remainder
+					if(rem==-1)
+					{
+						System.out.println("Divide by 0 is not possible.");
+					}
+					else
+					{
+						System.out.println("Remainder when "+no1+" is divided by "+ no2+ " is:"+rem);
+					}
+					break;
+				case 2:
+					System.out.print("Enter two no's:");
+					no1=sc.nextInt();			
+					no2=sc.nextInt();
+					gcd=ob.gcd(no1, no2);				// calling second function to find GCD
+					System.out.println("GCD of given 2 no.'s is:"+gcd);
+					break;
+				case 3:
+					System.out.print("Enter a no.:");
+					num=sc.nextInt();
+					largest=ob.largestDigit(num);		// calling third function to find largest digit
+					System.out.println("Largest digit in the given No. "+num+ " is:"+largest);
+					break;
+				case 0:
+					return;
+				default:
+					System.out.println("Enter a valid no.");
+					break;
+			}
+		}while(i<0||i>3);
 		sc.close();
 	}
-
 }
