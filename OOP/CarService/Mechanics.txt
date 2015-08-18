@@ -1,4 +1,0 @@
-1,Mechanic1,SUV,5000
-2,Mechanic1,HB,2000
-3,Mechanic1,SEDAN,3000
-4,Mechanic1,SEDAN,3000
