@@ -27,6 +27,7 @@ public class Action {
 				break;
 				
 			case 3:
+				TrainReservation.display("P");
 				i=TrainReservation.filteredTrain("P");
 				if(i==0)
 				{
@@ -39,6 +40,7 @@ public class Action {
 				break;
 				
 			case 4:
+				TrainReservation.display("G");
 				i=TrainReservation.filteredTrain("G");
 				if(i==0)
 				{

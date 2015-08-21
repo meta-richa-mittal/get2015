@@ -129,27 +129,18 @@ public class TrainReservation {
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
 			 displayHeading();
-			 java.util.Iterator<PassengerTrain> par1=passTrainList.iterator();
-				
-			while(par1.hasNext())
-			{
-				
-				PassengerTrain  pass=par1.next();
-				System.out.println(pass._trainName+"\t"+pass._trainID+"\t\t"+pass._from+"\t"+pass._to+"\t"+pass._travelTime+"\t\t"+pass._ticketRate+"\t"+pass._availableSeat);
-			}
+				/*
+			  * calling function of PassengerTrain to display trains
+			  */
+			 PassengerTrain.displayPassengerTrain(passTrainList);
 		}
 	   else if(tType.compareToIgnoreCase("G")==0)
 	   {
 		   displayHeading();
-		   java.util.Iterator<GoodsTrain> par2=goodTrainList.iterator();
-			
-			while(par2.hasNext())                       
-			  {
-				
-				GoodsTrain  good=par2.next();
-				System.out.println(good._trainName+"\t"+good._trainID+"\t\t"+good._from+"\t"+good._to+"\t"+good._travelTime+"\t\t"+good._ticketRate+"\t"+good._availableWeight);
-			  }
-		      
+		   	/*
+			  * calling function of GoodsTrain to display trains
+			  */
+		   GoodsTrain.displayGoodsTrain(goodTrainList);
 	   }
 	   else
 	   {
@@ -187,55 +178,25 @@ public class TrainReservation {
 		 System.out.println("Enter TO station:");
 		 String to=sc.next();
 		 space();
-		 int flag=0;
-		 int size=0;
+		 int value=0;
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
 			 System.out.println(Constant.AVAILABLETRAINS);
-			 
-			 java.util.Iterator<PassengerTrain> par1=passTrainList.iterator();
-			 while(par1.hasNext())                       //loop to check weather Participant available or not
-			  {
-				 size++;
-				 PassengerTrain  pass=par1.next();
-				 if(pass._from.compareToIgnoreCase(from)==0 && pass._to.compareToIgnoreCase(to)==0  )
-				 {
-					 System.out.println(pass._trainName+"\t"+pass._trainID+"\t\t"+pass._from+"\t"+pass._to+"\t"+pass._travelTime+"\t\t"+pass._ticketRate+"\t"+pass._availableSeat);
-					 filteredPassTrainList.add(pass);
-				 }
-				 else
-				 {
-					 flag++;
-				 }
-			  }
+			 /*
+			  * calling function of PassengerTrain to filter trains
+			  */
+			 value=PassengerTrain.filteredPassengerTrain(passTrainList, filteredPassTrainList, from, to);
 		 }
 		 else if(tType.compareToIgnoreCase("G")==0)
 		 {
 			
 			 System.out.println(Constant.AVAILABLETRAINS);
-			 java.util.Iterator<GoodsTrain> par2=goodTrainList.iterator();
-			 while(par2.hasNext())                       //loop to check weather Participant available or not
-			  {
-				 size++;
-				 GoodsTrain good=par2.next();
-				 if(good._from.compareToIgnoreCase(from)==0 && good._to.compareToIgnoreCase(to)==0)
-				 {
-					
-					 System.out.println(good._trainName+"\t"+good._trainID+"\t\t"+good._from+"\t"+good._to+"\t"+good._travelTime+"\t\t"+good._ticketRate+"\t"+good._availableWeight);
-					 filteredGoodTrainList.add(good);
-				 }
-				 else
-				 {
-					 flag++;
-				 }
-			  }
+			 /*
+			  * calling function of GoodsTrain to filter trains
+			  */
+			 value=GoodsTrain.filteredGoodsTrain(goodTrainList, filteredGoodTrainList, from, to);
 		 }
-		 if(flag==size)
-		 {
-			 System.out.println("No trains found.");
-			 return 0;
-		 }
-		 return 1;
+		 return value;
 		 //sc.close();
 		 
 	}
@@ -251,82 +212,24 @@ public class TrainReservation {
 	{
 		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
-		String train="";
-		int flag=0,size=0;
+		String trainId="";
 		try
 		{
 			System.out.println("Enter train id:");
-			train=sc.nextLine();
+			trainId=sc.nextLine();
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
-			 
-				
-			 java.util.Iterator<PassengerTrain> par1=filteredPassTrainList.iterator();
-			 while(par1.hasNext())                       //loop to check weather Participant available or not
-			  {
-				 size++;
-				 PassengerTrain  pass=par1.next();
-				 if(pass._trainID.compareToIgnoreCase(train)==0 || pass._trainName.compareToIgnoreCase(train)==0)
-				 {
-					 System.out.println("Enter no of seats:");
-					 int seats=sc.nextInt();
-					 if(seats>pass._availableSeat)
-					 {
-						 System.out.println("No of seats available are less");
-					 }
-					 else
-					 {
-						 Payment pay=new Payment();
-						long totalFare=pay.paymentMode(seats,pass._ticketRate);
-						 pass._availableSeat-=seats;
-						 space();
-						 System.out.println("Tickets Details:-----");
-						 System.out.println("TRAIN NAME: "+pass._trainName+"\t"+"TRAIN ID: "+pass._trainID+"\t"+"SOURCE: "+pass._from+"\t"+"DESTINATION: "+pass._to+"\t"+"NO OF SEATS: "+seats+"\t"+"TOTAL AMOUNT PAID: "+totalFare);
-						 space();
-						 display(tType);
-					 }
-				 }
-				 else
-				 {
-					 flag++;
-				 }
-			  }
+			 /*
+			  * calling function of PassengerTrain to reserve seats
+			  */
+			 PassengerTrain.reservePassengerTrain(passTrainList, filteredPassTrainList, trainId, tType);
 		 }
 		 else if(tType.compareToIgnoreCase("G")==0)
 		 {
-			 
-			 java.util.Iterator<GoodsTrain> par2=filteredGoodTrainList.iterator();
-			 while(par2.hasNext())                      
-			  {
-				 size++;
-				 GoodsTrain  good=par2.next();
-				 if(good._trainID.compareToIgnoreCase(train)==0 || good._trainName.compareToIgnoreCase(train)==0)
-				 {
-					 System.out.println("Enter total weight:");
-					 int weight=sc.nextInt();
-					 if(weight>good._availableWeight)
-					 {
-						 System.out.println("available weight is less");
-					 }
-					 else
-					 {
-						 Payment pay=new Payment();
-						 long totalFare=pay.paymentMode(weight,good._ticketRate);
-						 good._availableWeight-=weight;
-						 System.out.println("Tickets Details:");
-						 System.out.println(good._trainName+"\t"+good._trainID+"\t"+good._from+"\t"+good._to+"\t"+weight+"\t"+totalFare);
-						 display(tType);
-					 }
-				 }
-				 else
-				 {
-					 flag++;
-				 }
-			  }
-		 }
-		 if(flag==size)
-		 {
-			 System.out.println("No such trains available.");
+			 /*
+			  * calling function of GoodsTrain to reserve seats
+			  */
+			 GoodsTrain.reserveGoodsTrain(goodTrainList, filteredGoodTrainList, trainId, tType);
 		 }
 		 //sc.close();
 		}

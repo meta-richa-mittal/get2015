@@ -35,12 +35,12 @@ public class Menu {
 	 */
 	public void displayMenu() 
 	{
-		TrainReservation tr=new TrainReservation();
+		/*TrainReservation tr=new TrainReservation();
 		tr.readTrains();
 		//PassengerTrain pTrain= new PassengerTrain();
 		TrainReservation.readPassengerTrains("P");
 		//GoodsTrain gTrain= new GoodsTrain();
-		TrainReservation.readGoodsTrains("G");
+		TrainReservation.readGoodsTrains("G");*/
 
 		//while (true)
 		//{

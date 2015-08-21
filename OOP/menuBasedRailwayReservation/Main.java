@@ -18,20 +18,34 @@ public class Main {
 	 */
 	public static void main(String args[])
 	{
+		
+		TrainReservation tr=new TrainReservation();
+		tr.readTrains();
+		TrainReservation.readPassengerTrains("P");
+		TrainReservation.readGoodsTrains("G");
+		ConsoleMenuItem cm=new ConsoleMenuItem();
+		cm.setMenu();
+		do
+		{
 			System.out.print("WELCOME...\n");
-			ConsoleMenuItem cm=new ConsoleMenuItem();
-			cm.setMenu();
 			Menu m=new Menu();
 			m.displayMenu();
+			valid=iterate();
+		}while(valid==1);
 	}
 	
 	
-	/*public static int iterate()
+	
+	/**
+	 * This function will ask user to continue or exit
+	 * @return
+	 */
+	public static int iterate()
 	{
 		System.out.print("Press 1 to continue and 0 to exit..");
 		int valid=sc.nextInt();
 		return valid;
 		
-	}*/
+	}
 
 }
