@@ -1,8 +1,14 @@
-package railwayReservation;
 
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * 
@@ -21,7 +27,96 @@ public class TrainReservation {
 	static ArrayList<GoodsTrain> gt=new ArrayList<GoodsTrain>();
 	static ArrayList<PassengerTrain> ptNew=new ArrayList<PassengerTrain>();
 	static ArrayList<GoodsTrain> gtNew=new ArrayList<GoodsTrain>();
+	
+	
+	
+	
+	/**
+	 * This function will read all the trains and store them in their respective lists
+	 */
+	public void readTrains()
+	{
 		
+		String traindata="";
+		String trainType="",trainID="",trainName="",from="",to="",duration="",amount="",available="";
+		BufferedReader br = null;     //input BY file
+
+		try 
+		{
+
+			StringTokenizer stringTokenizer;
+
+			FileInputStream fin = new FileInputStream(new File(Constant.LOCATION));
+			DataInputStream in = new DataInputStream(fin);
+			br = new BufferedReader(new InputStreamReader(in));
+
+			
+
+			while ((traindata = br.readLine()) != null) 
+			{
+
+				stringTokenizer = new StringTokenizer(traindata,","); 
+				
+				while (stringTokenizer.hasMoreTokens()) 
+				{ 
+			        trainType=stringTokenizer.nextToken();
+			        trainID=stringTokenizer.nextToken();
+			        trainName=stringTokenizer.nextToken();
+			        from=stringTokenizer.nextToken();
+			        to=stringTokenizer.nextToken();
+			        duration=stringTokenizer.nextToken();
+			        amount=stringTokenizer.nextToken();
+			        available=stringTokenizer.nextToken();
+			        int time=Integer.parseInt(duration); 
+				    int amount1=Integer.parseInt(amount); 
+				    int available1=Integer.parseInt(available); 
+				    if(trainType.compareTo("P")==0)
+				    {
+				        pt.add(new PassengerTrain(trainType,trainID,trainName,from,to,time,amount1,available1));
+				    }
+				    else if(trainType.compareTo("G")==0)
+				    {
+					    gt.add(new GoodsTrain(trainType,trainID,trainName,from,to,time,amount1,available1)); 
+				    }
+				    
+				}
+			}
+			br.close();
+
+		  } 
+		catch (IOException e)
+		{
+			  e.printStackTrace();
+		} 
+	}
+	
+	
+	/**
+	 * This function reads all the passenger trains from the file
+	 * @param tType: type of train
+	 * @return array list of passenger trains
+	 */
+	public static ArrayList<PassengerTrain> readPassengerTrains(String tType)
+	{	
+		return pt;
+	}
+	
+	
+	
+	
+	/**
+	 * This function reads all the good trains from the file
+	 * @param tType: type of train
+	 * @return array list of good trains
+	 */
+	public static ArrayList<GoodsTrain> readGoodsTrains(String tType)
+	{
+		return gt;
+	}
+	
+	
+	
+	
 	/**
 	 * This function displays all the available trains of a particular type
 	 * @param tType: type of train
@@ -31,9 +126,7 @@ public class TrainReservation {
 	{
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
-			 
-			 System.out.println("Train Chart:-----");
-			 System.out.println("Train Name\tTrain Id\tFrom\tTo\tTime Duration\tFare\tAvailable");
+			 displayHeading();
 			 java.util.Iterator<PassengerTrain> par1=pt.iterator();
 				
 			while(par1.hasNext())
@@ -45,8 +138,7 @@ public class TrainReservation {
 		}
 	   else if(tType.compareToIgnoreCase("G")==0)
 	   {
-		   System.out.println("Train Chart:-----");
-			 System.out.println("Train Name\tTrain Id\tFrom\tTo\tTime Duration\tFare\tAvailable");
+		   displayHeading();
 		   java.util.Iterator<GoodsTrain> par2=gt.iterator();
 			
 			while(par2.hasNext())                       
@@ -64,6 +156,20 @@ public class TrainReservation {
 	   }
 		return 1;
 	}
+	
+	
+	
+	
+	/**
+	 * This function will display the heading for train chart
+	 */
+	public static void displayHeading()
+	{
+		 System.out.println(Constant.TRAINCHART);
+	}
+	
+	
+	
 	
 	/**
 	 * This Function displays trains after filtering according to given source and destination
@@ -83,8 +189,7 @@ public class TrainReservation {
 		 int size=0;
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
-			 System.out.println("Available trains are:-----");
-			 System.out.println("Train Name\tTrain Id\tFrom\tTo\tTime Duration\tFare\tAvailable");
+			 System.out.println(Constant.AVAILABLETRAINS);
 			 
 			 java.util.Iterator<PassengerTrain> par1=pt.iterator();
 			 while(par1.hasNext())                       //loop to check weather Participant available or not
@@ -105,8 +210,7 @@ public class TrainReservation {
 		 else if(tType.compareToIgnoreCase("G")==0)
 		 {
 			
-			 System.out.println("Available trains are:-----");
-			 System.out.println("Train Name\tTrain Id\tFrom\tTo\tTime Duration\tFare\tAvailable");
+			 System.out.println(Constant.AVAILABLETRAINS);
 			 java.util.Iterator<GoodsTrain> par2=gt.iterator();
 			 while(par2.hasNext())                       //loop to check weather Participant available or not
 			  {
@@ -134,6 +238,9 @@ public class TrainReservation {
 		 
 	}
 	
+	
+	
+	
 	/**
 	 * This function reserves the seats and shows ticket details
 	 * @param tType: type of train
@@ -143,12 +250,11 @@ public class TrainReservation {
 		@SuppressWarnings("resource")
 		Scanner sc=new Scanner(System.in);
 		String train="";
+		int flag=0,size=0;
 		try
 		{
 			System.out.println("Enter train id:");
 			train=sc.nextLine();
-			
-		//	String train=sc.next();
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
 			 
@@ -156,6 +262,7 @@ public class TrainReservation {
 			 java.util.Iterator<PassengerTrain> par1=ptNew.iterator();
 			 while(par1.hasNext())                       //loop to check weather Participant available or not
 			  {
+				 size++;
 				 PassengerTrain  pass=par1.next();
 				 if(pass._trainID.compareToIgnoreCase(train)==0 || pass._trainName.compareToIgnoreCase(train)==0)
 				 {
@@ -167,30 +274,8 @@ public class TrainReservation {
 					 }
 					 else
 					 {
-						 long totalFare=0;
-						 //long totalFare=seats*pass._ticketRate;
-						 System.out.println("Please select the mode of payment:\n1 for Credit Card\n2 for Wallet\n3 for Net Banking");
-						 int option=sc.nextInt();
-						 Payment p=new Payment();
-						 switch(option)
-						 {
-						 	case 1:
-						 		totalFare=p.creditCard(seats, pass._ticketRate);
-						 		break;
-						 	case 2:
-						 		
-						 		totalFare=p.wallet(seats, pass._ticketRate);
-						 		break;
-						 	
-						 	case 3:
-						 		
-						 		totalFare=p.netBanking(seats, pass._ticketRate);
-						 		break;
-						 	
-						 	default:
-						 		System.out.println("Please enter corrent mode of payment:");
-						 		break;
-						 }
+						 Payment pay=new Payment();
+						long totalFare=pay.paymentMode(seats,pass._ticketRate);
 						 pass._availableSeat-=seats;
 						 space();
 						 System.out.println("Tickets Details:-----");
@@ -201,7 +286,7 @@ public class TrainReservation {
 				 }
 				 else
 				 {
-					 System.out.println("No such trains available.");
+					 flag++;
 				 }
 			  }
 		 }
@@ -211,10 +296,11 @@ public class TrainReservation {
 			 java.util.Iterator<GoodsTrain> par2=gtNew.iterator();
 			 while(par2.hasNext())                      
 			  {
+				 size++;
 				 GoodsTrain  good=par2.next();
 				 if(good._trainID.compareToIgnoreCase(train)==0 || good._trainName.compareToIgnoreCase(train)==0)
 				 {
-					 System.out.println("Enter no of seats:");
+					 System.out.println("Enter total weight:");
 					 int weight=sc.nextInt();
 					 if(weight>good._availableWeight)
 					 {
@@ -222,29 +308,8 @@ public class TrainReservation {
 					 }
 					 else
 					 {
-						 long totalFare=0;
-						 System.out.println("Please select the mode of payment:\n1 for Credit Card\n2 for Wallet\n3 for Net Banking");
-						 int option=sc.nextInt();
-						 Payment p=new Payment();
-						 switch(option)
-						 {
-						 	case 1:
-						 		totalFare=p.creditCard(weight, good._ticketRate);
-						 		break;
-						 	case 2:
-						 		
-						 		totalFare=p.wallet(weight, good._ticketRate);
-						 		break;
-						 	
-						 	case 3:
-						 		
-						 		totalFare=p.netBanking(weight, good._ticketRate);
-						 		break;
-						 	
-						 	default:
-						 		System.out.println("Please enter corrent mode of payment:");
-						 		break;
-						 }
+						 Payment pay=new Payment();
+						 long totalFare=pay.paymentMode(weight,good._ticketRate);
 						 good._availableWeight-=weight;
 						 System.out.println("Tickets Details:");
 						 System.out.println(good._trainName+"\t"+good._trainID+"\t"+good._from+"\t"+good._to+"\t"+weight+"\t"+totalFare);
@@ -253,9 +318,13 @@ public class TrainReservation {
 				 }
 				 else
 				 {
-					 System.out.println("No such trains available.");
+					 flag++;
 				 }
 			  }
+		 }
+		 if(flag==size)
+		 {
+			 System.out.println("No such trains available.");
 		 }
 		 //sc.close();
 		}
@@ -265,55 +334,9 @@ public class TrainReservation {
 		}
 	}
 	
-	/**
-	 * This is the main Function
-	 */
-	public static void main(String[] args) 
-	{
-		PassengerTrain pTrn=new PassengerTrain();
-		GoodsTrain gTrn=new GoodsTrain();
-		pt=pTrn.readTrains("P");
-		gt=gTrn.readTrains("G");
-		int valid=0;
-		do
-		{
-			try
-			{
-				@SuppressWarnings("resource")
-				Scanner sc=new Scanner(System.in);
-				System.out.println("Enter your name:");
-				String name=sc.next();
-				@SuppressWarnings("unused")
-				Passenger ps=new Passenger(name);
-				System.out.println("Enter which type of train you want(Enter P for Passenger train and G for Goods train):");
-				String tType=sc.next();
-				int i=display(tType);
-				if(i==0)
-				{
-					return;
-				}
-				space();
-				
-				int j=filteredTrain(tType);
-				if(j==0)
-				{
-					return;
-				}
-				space();
-				 
-				seatReserve(tType);
-				space();
-				System.out.println("press 1 to continue and 0 to exit");
-				valid=sc.nextInt();
-				// sc.close();
-			}
-			catch(Exception e) 
-			{
-		        e.printStackTrace();
-			}
-			
-		}while(valid==1);	
-	}
+	
+	
+	
 	
 	/**
 	 * This function will print two blank lines

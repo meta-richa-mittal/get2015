@@ -1,9 +1,38 @@
-package railwayReservation;
+
 
 import java.util.Scanner;
 
 public class Payment {
 	long totalFare=0;
+	Scanner sc=new Scanner(System.in);
+	
+	public long paymentMode(int seats,int rate)
+	{
+		 //long totalFare=seats*pass._ticketRate;
+		 System.out.println("Please select the mode of payment:\n1 for Credit Card\n2 for Wallet\n3 for Net Banking");
+		 int option=sc.nextInt();
+		 Payment p=new Payment();
+		 switch(option)
+		 {
+		 	case 1:
+		 		totalFare=p.creditCard(seats, rate);
+		 		break;
+		 	case 2:
+		 		
+		 		totalFare=p.wallet(seats, rate);
+		 		break;
+		 	
+		 	case 3:
+		 		
+		 		totalFare=p.netBanking(seats, rate);
+		 		break;
+		 	
+		 	default:
+		 		System.out.println("Please enter corrent mode of payment:");
+		 		break;
+		 }
+		 return totalFare;
+	}
 	
 	/**
 	 * This function will pay using credit card
@@ -27,6 +56,9 @@ public class Payment {
  		return totalFare;
 	}
 	
+	
+	
+	
 	/**
 	 * This function will pay using wallet
 	 * @param no: total no of tickets to reserve
@@ -40,6 +72,9 @@ public class Payment {
  		
  		return totalFare;
 	}
+	
+	
+	
 	
 	/**
 	 * This function will pay using Net Banking
@@ -64,5 +99,8 @@ public class Payment {
  		totalFare=no*rate;
  		return totalFare;
 	}
+	
+	
+	
 
 }

@@ -1,9 +1,8 @@
-package railwayReservation;
+
 
 public class Passenger {
 	String _userName="";
 	String _trainID="";
-	//String _ticketId="";
 	String _paymentId="";
 	int _capacityRequired=0;
 	int _totalAmount=0;
@@ -13,7 +12,6 @@ public class Passenger {
 	 */
 	public Passenger(String userName,String trainID,String ticketId,String paymentId,int capacityRequired,int totalAmount) 
 	{
-		// TODO Auto-generated constructor stub
 		this._userName=userName;
 		this._trainID=trainID;
 		//this._ticketId=ticketId;
