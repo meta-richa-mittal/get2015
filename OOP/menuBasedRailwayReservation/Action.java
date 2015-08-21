@@ -1,6 +1,18 @@
 
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This class contains function to be performed on each menu item
+ *
+ */
 public class Action {
+	
+	/**
+	 * This function calls the appropriate action to be performed when some menu item is selected
+	 * @param choice: chosen menu item
+	 */
 	int perform(int choice)
 	{
 		int i;

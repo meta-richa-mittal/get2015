@@ -2,10 +2,24 @@
 
 import java.util.Scanner;
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This class determines the modes of payment and functionality of each mode
+ *
+ */
 public class Payment {
 	long totalFare=0;
 	Scanner sc=new Scanner(System.in);
 	
+	
+	/**
+	 * This method will find the mode of payment
+	 * @param seats: no of seats to be booked
+	 * @param rate: cost of each seat
+	 * @return total fare
+	 */
 	public long paymentMode(int seats,int rate)
 	{
 		 //long totalFare=seats*pass._ticketRate;

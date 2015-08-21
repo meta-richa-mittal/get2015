@@ -1,5 +1,12 @@
 
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This class contains details of the passengers
+ *
+ */
 public class Passenger {
 	String _userName="";
 	String _trainID="";

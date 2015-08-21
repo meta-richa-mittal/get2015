@@ -23,10 +23,10 @@ import java.util.StringTokenizer;
  */
 public class TrainReservation {
 	
-	static ArrayList<PassengerTrain> pt=new ArrayList<PassengerTrain>();
-	static ArrayList<GoodsTrain> gt=new ArrayList<GoodsTrain>();
-	static ArrayList<PassengerTrain> ptNew=new ArrayList<PassengerTrain>();
-	static ArrayList<GoodsTrain> gtNew=new ArrayList<GoodsTrain>();
+	static ArrayList<PassengerTrain> passTrainList=new ArrayList<PassengerTrain>();
+	static ArrayList<GoodsTrain> goodTrainList=new ArrayList<GoodsTrain>();
+	static ArrayList<PassengerTrain> filteredPassTrainList=new ArrayList<PassengerTrain>();
+	static ArrayList<GoodsTrain> filteredGoodTrainList=new ArrayList<GoodsTrain>();
 	
 	
 	
@@ -72,11 +72,11 @@ public class TrainReservation {
 				    int available1=Integer.parseInt(available); 
 				    if(trainType.compareTo("P")==0)
 				    {
-				        pt.add(new PassengerTrain(trainType,trainID,trainName,from,to,time,amount1,available1));
+				    	passTrainList.add(new PassengerTrain(trainType,trainID,trainName,from,to,time,amount1,available1));
 				    }
 				    else if(trainType.compareTo("G")==0)
 				    {
-					    gt.add(new GoodsTrain(trainType,trainID,trainName,from,to,time,amount1,available1)); 
+				    	goodTrainList.add(new GoodsTrain(trainType,trainID,trainName,from,to,time,amount1,available1)); 
 				    }
 				    
 				}
@@ -91,6 +91,8 @@ public class TrainReservation {
 	}
 	
 	
+	
+	
 	/**
 	 * This function reads all the passenger trains from the file
 	 * @param tType: type of train
@@ -98,7 +100,7 @@ public class TrainReservation {
 	 */
 	public static ArrayList<PassengerTrain> readPassengerTrains(String tType)
 	{	
-		return pt;
+		return passTrainList;
 	}
 	
 	
@@ -111,7 +113,7 @@ public class TrainReservation {
 	 */
 	public static ArrayList<GoodsTrain> readGoodsTrains(String tType)
 	{
-		return gt;
+		return goodTrainList;
 	}
 	
 	
@@ -127,7 +129,7 @@ public class TrainReservation {
 		 if(tType.compareToIgnoreCase("P")==0)
 		 {
 			 displayHeading();
-			 java.util.Iterator<PassengerTrain> par1=pt.iterator();
+			 java.util.Iterator<PassengerTrain> par1=passTrainList.iterator();
 				
 			while(par1.hasNext())
 			{
@@ -139,7 +141,7 @@ public class TrainReservation {
 	   else if(tType.compareToIgnoreCase("G")==0)
 	   {
 		   displayHeading();
-		   java.util.Iterator<GoodsTrain> par2=gt.iterator();
+		   java.util.Iterator<GoodsTrain> par2=goodTrainList.iterator();
 			
 			while(par2.hasNext())                       
 			  {
@@ -191,7 +193,7 @@ public class TrainReservation {
 		 {
 			 System.out.println(Constant.AVAILABLETRAINS);
 			 
-			 java.util.Iterator<PassengerTrain> par1=pt.iterator();
+			 java.util.Iterator<PassengerTrain> par1=passTrainList.iterator();
 			 while(par1.hasNext())                       //loop to check weather Participant available or not
 			  {
 				 size++;
@@ -199,7 +201,7 @@ public class TrainReservation {
 				 if(pass._from.compareToIgnoreCase(from)==0 && pass._to.compareToIgnoreCase(to)==0  )
 				 {
 					 System.out.println(pass._trainName+"\t"+pass._trainID+"\t\t"+pass._from+"\t"+pass._to+"\t"+pass._travelTime+"\t\t"+pass._ticketRate+"\t"+pass._availableSeat);
-					 ptNew.add(pass);
+					 filteredPassTrainList.add(pass);
 				 }
 				 else
 				 {
@@ -211,7 +213,7 @@ public class TrainReservation {
 		 {
 			
 			 System.out.println(Constant.AVAILABLETRAINS);
-			 java.util.Iterator<GoodsTrain> par2=gt.iterator();
+			 java.util.Iterator<GoodsTrain> par2=goodTrainList.iterator();
 			 while(par2.hasNext())                       //loop to check weather Participant available or not
 			  {
 				 size++;
@@ -220,7 +222,7 @@ public class TrainReservation {
 				 {
 					
 					 System.out.println(good._trainName+"\t"+good._trainID+"\t\t"+good._from+"\t"+good._to+"\t"+good._travelTime+"\t\t"+good._ticketRate+"\t"+good._availableWeight);
-					 gtNew.add(good);
+					 filteredGoodTrainList.add(good);
 				 }
 				 else
 				 {
@@ -259,7 +261,7 @@ public class TrainReservation {
 		 {
 			 
 				
-			 java.util.Iterator<PassengerTrain> par1=ptNew.iterator();
+			 java.util.Iterator<PassengerTrain> par1=filteredPassTrainList.iterator();
 			 while(par1.hasNext())                       //loop to check weather Participant available or not
 			  {
 				 size++;
@@ -293,7 +295,7 @@ public class TrainReservation {
 		 else if(tType.compareToIgnoreCase("G")==0)
 		 {
 			 
-			 java.util.Iterator<GoodsTrain> par2=gtNew.iterator();
+			 java.util.Iterator<GoodsTrain> par2=filteredGoodTrainList.iterator();
 			 while(par2.hasNext())                      
 			  {
 				 size++;

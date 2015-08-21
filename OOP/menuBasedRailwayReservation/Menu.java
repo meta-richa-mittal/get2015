@@ -3,15 +3,24 @@ import java.util.List;
 import java.util.Scanner;
 
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This class adds menu items to the menu and displays them
+ *
+ */
 public class Menu {
 	
-	static ArrayList<PassengerTrain> pt=new ArrayList<PassengerTrain>();
-	static ArrayList<GoodsTrain> gt=new ArrayList<GoodsTrain>();
 	static List<String> items = new ArrayList<>();
 
 	static private Scanner scan  = new Scanner(System.in);
 	
 	
+	/**
+	 * This will add the items of menu to the items list
+	 * @param item: item of menu
+	 */
 	public void addMenuItem(String item)
 	{
 
@@ -19,6 +28,11 @@ public class Menu {
 
 	}
 
+	
+	
+	/**
+	 * This will display the menu items to the console
+	 */
 	public void displayMenu() 
 	{
 		TrainReservation tr=new TrainReservation();

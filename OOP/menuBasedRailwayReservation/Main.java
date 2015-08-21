@@ -1,11 +1,21 @@
 import java.util.Scanner;
 
 
-
-
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This class contains the main function
+ *
+ */
 public class Main {
 	static Scanner sc=new Scanner(System.in);
 	static int valid=0;
+	
+	
+	
+	/**
+	 * This is the main function
+	 */
 	public static void main(String args[])
 	{
 			System.out.print("WELCOME...\n");
