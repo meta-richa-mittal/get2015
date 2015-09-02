@@ -22,6 +22,9 @@ public class BinarySearch {
 		int position=-1;
 		
 		int mid=(lb+ub)/2;
+		/**
+		 * Loop Invariants: array[],array.length,element
+		 */
 		while(!(lb>ub)) {
 			if(array[mid]==element) {
 				if(mid!=0) {
