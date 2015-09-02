@@ -15,8 +15,10 @@ public class PriorityQueue {
 	Jobs job=new Jobs();
 	
 	
+	
+	
 	/**
-	 * function to set priorities of jobs
+	 * This function sets priorities of jobs
 	 */
 	public void setJobsPriority() {
 		job.setJobs();
