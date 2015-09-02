@@ -47,9 +47,15 @@ public class Main {
 					}
 					break;
 					case 2:
-						System.out.print("\n Enter name of job : ");
+						System.out.println("\n Enter name of job : ");
 						item = sc.next();
-						q.enqueue(item);
+						if(item.compareToIgnoreCase("undergraduate")==0 || item.compareToIgnoreCase("graduate")==0 || item.compareToIgnoreCase("professor")==0 || item.compareToIgnoreCase("chair")==0) {
+							q.enqueue(item);
+						}
+						else {
+							System.out.println("Enter a correct name of job");
+						}
+						
 						break;
 					
 					case 3:
