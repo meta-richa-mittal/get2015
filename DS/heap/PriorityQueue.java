@@ -140,8 +140,11 @@ public class PriorityQueue {
 	}
 	
 	
+	
+	
+	
 	/**
-	 * Function to rearrange max heap after removing root
+	 * This function will rearrange max heap after removing root
 	 */
 	public void shiftDown() {
 		int k=0;
