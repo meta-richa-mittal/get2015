@@ -21,7 +21,7 @@ public class SortingTechniques {
 	Queue<Integer> queues[];
 	int max=0;
 	int maxDigits=1;
-	
+	String typeOfSort="";
 	
 	
 	
@@ -40,7 +40,6 @@ public class SortingTechniques {
 				try {
 					array=new int[noOfElements];
 					System.out.println("Enter elements of array:");
-					//int digitsMax=1;
 					for(int i=0;i<noOfElements;i++) {
 						array[i]=sc.nextInt();
 					}
@@ -49,21 +48,6 @@ public class SortingTechniques {
 					
 					maxDigits=maxDigits(max);
 						
-						
-						/*int value=array[i];
-						int digits=0;
-						if(value==0) {
-							digits=1;
-						}
-						else {
-							while(value!=0) {
-								value=value/10;
-								digits++;
-							}
-						}
-						if(digits>digitsMax) {
-							digitsMax=digits;
-						}*/
 					return maxDigits;
 				}
 				catch(NegativeArraySizeException ne) {
@@ -125,8 +109,8 @@ public class SortingTechniques {
 	/**
 	 * This function performs bubble sort on the array to sort in ascending order
 	 */
-	public void bubbleSort() {
-		boolean swapped=false;;
+	public String bubbleSort() {
+		boolean swapped=false;
 		int size=array.length;
 		do {
 			swapped=false;
@@ -141,10 +125,16 @@ public class SortingTechniques {
 				}
 			size--;
 		}while(swapped);
+		typeOfSort="BUBBLE SORT";
+		return typeOfSort;
 	}
 	
 	
 	
+	
+	/*
+	 * Function to swap two elements
+	 */
 	/*public void swap(int x,int y) {
 		int temp=x;
 		x=y;
@@ -160,12 +150,14 @@ public class SortingTechniques {
 	 * @param lb: lower bound of partition
 	 * @param ub: upper bound of partition
 	 */
-	public void quickSort(int lb, int ub) {
+	public String quickSort(int lb, int ub) {
 		if(lb<ub) {
 			int partitionIndex=partition(lb, ub);
 			quickSort(lb, partitionIndex-1);
 			quickSort(partitionIndex+1, ub);
 		}
+		typeOfSort="QUICK SORT";
+		return typeOfSort;
 		
 		
 	}
@@ -181,8 +173,6 @@ public class SortingTechniques {
 	 * @return partition index
 	 */
 	public int partition(int initialIndex, int lastIndex) {
-		
-		//int pivot=array[initialIndex];
 		int pivotIndex=initialIndex;
 		int storeIndex=pivotIndex+1;
 		
@@ -209,13 +199,7 @@ public class SortingTechniques {
 	/**
 	 * This function performs counting sort on the array to sort in ascending order
 	 */
-	public void countingSort() {
-		/*int max=array[0];
-		for(int i=0;i<array.length-1;i++) {
-			if(array[i+1]>max) {
-				max=array[i+1];
-			}
-		}*/
+	public String countingSort() {
 		int[] countArray=new int[max+1];
 		
 		for(int i=0;i<array.length;i++) {
@@ -229,6 +213,8 @@ public class SortingTechniques {
 				j++;
 			}
 		}
+		typeOfSort="COUNTING SORT";
+		return typeOfSort;
 	}
 	
 	
@@ -240,7 +226,7 @@ public class SortingTechniques {
 	 * @param noOfDigits: no of digits of the max value in the array
 	 */
 	@SuppressWarnings("unchecked")
-	public void radixSort(int noOfDigits) {
+	public String radixSort(int noOfDigits) {
 		
 		queues=new Queue[10];
 		
@@ -275,6 +261,8 @@ public class SortingTechniques {
 				
 			}
 		}
+		typeOfSort="RADIX SORT";
+		return typeOfSort;
 		
 	}
 	

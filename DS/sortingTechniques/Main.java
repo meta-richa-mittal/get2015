@@ -16,19 +16,21 @@ public class Main {
 	static Scanner sc;
 	
 	
-	
 	/**
 	 * Main function
 	 */
 	public static void main(String ags[]) {
 		
-		SortingTechniques sort=new SortingTechniques();
+		final int LIMIT_COMPARISON=10;
+		final int LIMIT_LINEAR=2;
 		String typeOfSort="";
+		SortingTechniques sort=new SortingTechniques();
+		
 		sc=new Scanner(System.in);
 		int noOfElements=0;
 		try {
-		System.out.println("Enter no of elements in array:");
-		noOfElements=sc.nextInt();
+			System.out.println("Enter no of elements in array:");
+			noOfElements=sc.nextInt();
 		}
 		catch(InputMismatchException ie) {
 			System.out.println("Enter valid no. of elements");
@@ -50,24 +52,20 @@ public class Main {
 			
 			switch(choice) {
 			case "1":
-				if(noOfElements<=10) {
-					typeOfSort="Bubble Sort";
-					sort.bubbleSort();
+				if(noOfElements<=LIMIT_COMPARISON) {
+					typeOfSort=sort.bubbleSort();
 				}
 				else {
-					typeOfSort="Quick Sort";
-					sort.quickSort(0, noOfElements-1);
+					typeOfSort=sort.quickSort(0, noOfElements-1);
 				}
 				
 				break;
 			case "2":
-				if(noOfDigits<=2) {
-					typeOfSort="Counting Sort";
-					sort.countingSort();			
+				if(noOfDigits<=LIMIT_LINEAR) {
+					typeOfSort=sort.countingSort();			
 				}
 				else {
-					typeOfSort="Radix Sort";
-					sort.radixSort(noOfDigits);
+					typeOfSort=sort.radixSort(noOfDigits);
 				}
 				break;
 			case "3":

@@ -36,8 +36,7 @@ public class Main {
 					choice = sc.nextInt();
 					switch (choice) {
 					case 1:
-						System.out.println("Enter the roll no of student: ");
-						int studentRollNo = sc.nextInt();
+						int studentRollNo=tree.inputStudent();
 						tree.insertToBST(studentRollNo);
 						break;
 					case 2:

@@ -2,6 +2,7 @@ package treeSort;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 
@@ -16,7 +17,7 @@ public class TreeSort {
 	Student student;
 	List<Integer> sortedList=new ArrayList<Integer>();
 	int i=0;
-	
+	Scanner sc=new Scanner(System.in);
 	
 	
 	/**
@@ -24,9 +25,9 @@ public class TreeSort {
 	 * condition of BST and thereby implements Tree Sort
 	 * @param value
 	 */
-	public void insertToBST(int value) {
+	public void insertToBST(int studentRollNo) {
 			
-		Student newStudent = new Student(value, null, null);
+		Student newStudent = new Student(studentRollNo, null, null);
 		if (student == null) {
 			student = newStudent;
 		} 
@@ -35,7 +36,7 @@ public class TreeSort {
 			Student parent;
 			while (true) {
 				parent = currentStudent;
-				if (value < currentStudent.getData()) {
+				if (studentRollNo < currentStudent.getData()) {
 					currentStudent = currentStudent.getLeftNode();
 					if (currentStudent == null) {
 						parent.setLeftNode(newStudent);
@@ -52,6 +53,13 @@ public class TreeSort {
 			}
 		}
 			
+	}
+	
+	
+	public int inputStudent() {
+		System.out.println("Enter the roll no of student: ");
+		int studentRollNo = sc.nextInt();
+		return studentRollNo;
 	}
 
 
@@ -70,8 +78,6 @@ public class TreeSort {
 			sortedList.add(inorder.getData());
 			display(inorder.getRightNode());
 		}
-	
-	
 }
 	
 	
