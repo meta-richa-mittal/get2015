@@ -1,85 +1,65 @@
-/*
-@Author: Richa Mittal
-@Description: This contains sql queries to find information from
-using exsiting database library_information tables
-*/
+USE LIS;
 
 
-/*Using exsiting database library_information*/
-USE library_information;
-
-
-/*Query to display all the members of members table*/
-SELECT * FROM members;
-
-
-/*Query to display member_nm,member_id,category*/
-SELECT member_nm, member_id,category 
-FROM members;
-
-
-
-/*Query to display member_nm,member_id,category where category is 'F'*/
-SELECT member_nm, member_id,category 
-FROM members 
-WHERE category='F';
-
-
-
-/*Query to display various categories*/
-SELECT DISTINCT category 
-FROM members;
-
-
-
-/*Query to display member name and their categories in descending order of members name*/
-SELECT member_nm,category 
-FROM members 
-ORDER BY member_nm DESC;
-
-
-
-
-/*Query to display all the titles, their subjects, and publishers*/
-SELECT t.title_nm, s.subject_nm, p.publisher_nm 
-FROM titles AS t, subjects AS s, publishers AS p 
-WHERE s.subject_id=t.subject_id AND p.publisher_id=t.publisher_id;
-
-/*SELECT t.title_nm, s.subject_nm, p.publisher_nm 
-FROM titles AS t 
+/*Display information of books issued for more than 2 months */
+SELECT * FROM
+(
+SELECT m.member_nm AS member_name,i.member_id,t.title_nm AS title_name,i.accession_no,i.issue_dt,i.due_dt,(DATEDIFF(CURDATE(),i.issue_dt))/30 AS issue_for_Months
+FROM book_issue AS i
 INNER JOIN 
-subjects AS s 
-ON s.subject_id=t.subject_id 
+members AS m
+ON
+i.member_id=m.member_id
+INNER JOIN
+books AS b
+ON
+i.accession_no=b.accession_no
+INNER JOIN
+titles AS t
+ON
+b.title_id=t.title_id
+WHERE (b.status='Issued' AND DATEDIFF(CURDATE(),i.issue_dt)>60)
+UNION
+SELECT m.member_nm AS member_name,i.member_id,t.title_nm AS title_name,i.accession_no,i.issue_dt,i.due_dt,(DATEDIFF(r.return_dt,r.issue_dt))/30 AS issue_for_Months
+FROM book_issue AS i
 INNER JOIN 
-publishers AS p 
+members AS m
+ON
+i.member_id=m.member_id
+INNER JOIN
+books AS b
+ON
+i.accession_no=b.accession_no
+INNER JOIN
+titles AS t
+ON
+b.title_id=t.title_id
+INNER JOIN
+book_return AS r
 ON 
-p.publisher_id=t.publisher_id;*/
+i.accession_no=r.accession_no AND i.member_id=r.member_id
+WHERE (b.status='Not Issued' AND DATEDIFF(r.return_dt,r.issue_dt)>60)
+
+) a
+ORDER BY member_name,title_name;
 
 
-/*Query to display no. of members present in each category*/
-SELECT category,COUNT(category) 
+
+
+
+/*Display rows from members table having maximum length for member name */
+SELECT member_nm,LENGTH(member_nm) AS Length_Of_Name 
 FROM members 
-GROUP BY CATEGORY;
+WHERE LENGTH(member_nm) 
+IN 
+(
+SELECT MAX(LENGTH(member_nm)) 
+FROM members
+);
 
 
 
 
-/*Query to display name of those members who belong to category to
-which 'Richa' belongs*/
-SELECT DISTINCT m1.member_nm 
-FROM members m1 
-JOIN 
-members m2 
-ON 
-m1.category 
-IN(SELECT category FROM members WHERE member_nm='Richa');
-
-
-/*Query to display info of all the books issued*/
-SELECT i.issue_dt, i.accession_no, i.member_id,r.return_dt 
-FROM book_issue AS i 
-LEFT OUTER JOIN 
-book_return AS r 
-ON 
-i.issue_dt=r.issue_dt AND i.accession_no=r.accession_no;
-
+/*Display count of no. of books issued so far */
+SELECT COUNT(DISTINCT accession_no) AS Total_Books_Issued FROM book_issue;
+SELECT COUNT(accession_no) AS Total_Books_Issued FROM book_issue;
