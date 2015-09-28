@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Car>
+	<vehicleDetail type="CAR">
+		<id>3</id>
+		<created_by>Maruti</created_by>
+		<created_time>09:20:22</created_time>
+		<make>Maruti</make>
+		<model>vdi</model>
+		<engineInCC>2000</engineInCC>
+		<fuelCapacity>40</fuelCapacity>
+		<milage>22</milage>
+		<price>100000</price>
+		<roadtax>1000</roadtax>
+		<AC>true</AC>
+		<powerSteering>true</powerSteering>
+		<accessoryKit>Radio,CD Player</accessoryKit>
+	</vehicleDetail>
+	
+	<vehicleDetail type="CAR">
+		<id>4</id>
+		<created_by>Maruti</created_by>
+		<created_time>11:20:22</created_time>
+		<make>Maruti</make>
+		<model>vdi</model>
+		<engineInCC>2000</engineInCC>
+		<fuelCapacity>15</fuelCapacity>
+		<milage>22</milage>
+		<price>100000</price>
+		<roadtax>1000</roadtax>
+		<AC>true</AC>
+		<powerSteering>false</powerSteering>
+		<accessoryKit>Radio</accessoryKit>
+	</vehicleDetail>
+</Car>
