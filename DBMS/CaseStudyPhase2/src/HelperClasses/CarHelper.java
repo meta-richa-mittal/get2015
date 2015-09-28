@@ -10,52 +10,49 @@ import pojoClasses.Car;
 import pojoClasses.Vehicle;
 import connection.ConnectionUtil;
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This is the helper class for inserting car into database
+ */
 public class CarHelper {
 
-	
-public static void InsertIntoVehicle(Vehicle vehicle) {
-		
-		/*Insert query for vehicle table*/
-		String query = "INSERT INTO vehicle VALUES('" + vehicle.getId() + "','"
-				+ vehicle.getCreated_by() + "','" + vehicle.getCreated_time()
-				+ "','" + vehicle.getMake() + "','" + vehicle.getModel() + "',"
-				+ vehicle.getEngineInCC() + "," + vehicle.getFuelCapacity()
-				+ "," + vehicle.getMilage() + "," + vehicle.getPrice() + ","
-				+ vehicle.getRoadTax() + ");";
-		
-		System.out.println("-Inserting data into 'vehicle' table");
-		insertIntoDatabase(query);
-		
-			
-			/*Insert query for bike table*/
-		String queryForCar = "INSERT INTO car (AC,power_steering,accessory_kit,ID) VALUES('"
-				+ ((Car) vehicle).getAC()
-				+ "','"
-				+ ((Car) vehicle).getPowerSteering()
-				+ "','"
-				+((Car) vehicle).getAccessoryKit()
-				+"','"
-				+ vehicle.getId() + "');";
-		
-		System.out.println("-Inserting data into 'car' table");
-		insertIntoDatabase(queryForCar);
-		
-	}
 
-	private static void insertIntoDatabase(String query) {
+	/**
+	 * inserts car into database using prepared statement
+	 */
+	static boolean insertIntoCar(Vehicle vehicle) {
+
+		/*Insert query for bike table*/
+		String queryForBike = "INSERT INTO Car (id, AC, power_steering, accessory_kit)"
+				+ " VALUES (?, ?, ?, ?); ";
+		System.out.println("-Inserting data into 'car' table");
 
 		Connection con = null;
 		ResultSet rs = null;
 		PreparedStatement preStmt = null;
 
+		int result=0;
 		ConnectionUtil connectionUtil = new ConnectionUtil();
 		con = connectionUtil.getConnection();
 		try {
 			/*creating statement*/
-			preStmt = con.prepareStatement(query);
+			preStmt = con.prepareStatement(queryForBike);
+			preStmt.setString(1,vehicle.getId());
+			preStmt.setBoolean(2,((Car) vehicle).getAC());
+			preStmt.setBoolean(3,((Car) vehicle).getPowerSteering());
+			preStmt.setString(4,((Car) vehicle).getAccessoryKit());
+			
 			/*executing query*/
-			preStmt.execute();
-			System.out.println("--Data inserted");
+			result = preStmt.executeUpdate();
+	
+			System.out.println("--Data Inserted");
+			
+			if(result>0)
+				return true;
+			else
+				return false;
 
 		} 
 		catch(SQLIntegrityConstraintViolationException e) {
@@ -65,7 +62,6 @@ public static void InsertIntoVehicle(Vehicle vehicle) {
 		}
 		catch (SQLException e) {
 			System.out.println("SQL error");
-			System.exit(1);
 			e.printStackTrace();
 		} 
 		finally {
@@ -87,5 +83,6 @@ public static void InsertIntoVehicle(Vehicle vehicle) {
 				e.printStackTrace();
 			}
 		}
+		return false;
 	}
 }

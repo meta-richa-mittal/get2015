@@ -19,6 +19,13 @@ import pojoClasses.Bike;
 import pojoClasses.Car;
 import pojoClasses.Vehicle;
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This class contains function to parse data from XML
+ * 				file using XML parsing
+ */
 public class XmlParsing {
 
 	static final String VEHICLEDETAIL = "vehicleDetail";
@@ -40,6 +47,11 @@ public class XmlParsing {
 	static final String HELMETPRICE = "helmetPrice";
 
 	
+	/**
+	 * read data from XML file
+	 * @param vehicleFile: location of XML file
+	 * @return list of data
+	 */
 	public List<Vehicle> readConfig(String vehicleFile) {
 		List<Vehicle> vehicles = new ArrayList<Vehicle>();
 		try {
@@ -53,8 +65,6 @@ public class XmlParsing {
 
 			while (eventReader.hasNext()) {
 				XMLEvent event = eventReader.nextEvent();
-				
-				// System.out.println("event:"+event);
 				if (event.isStartElement()) {
 					StartElement startElement = event.asStartElement();
 					
@@ -77,104 +87,7 @@ public class XmlParsing {
 						  }
 						 
 					}
-						/*if (event.asStartElement().getName().getLocalPart()
-								.equals(ID)) {
-
-							event = eventReader.nextEvent();
-							newVehicle.setId((event
-									.asCharacters().getData()).toString());
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(CREATEDBY)) {
-							event = eventReader.nextEvent();
-							newVehicle.setCreated_by((event
-									.asCharacters().getData()).toString());
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(CREATEDTIME)) {
-							event = eventReader.nextEvent();
-							newVehicle.setCreated_time(event.asCharacters().getData().toString());
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(MAKE)) {
-							event = eventReader.nextEvent();
-							newVehicle.setMake(event.asCharacters().getData());
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(MODEL)) {
-							event = eventReader.nextEvent();
-							newVehicle.setModel(event.asCharacters().getData());
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(ENGINEINCC)) {
-							event = eventReader.nextEvent();
-							newVehicle.setEngineInCC(Integer.parseInt(event
-									.asCharacters().getData()));
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(FUELCAPACITY)) {
-							event = eventReader.nextEvent();
-							newVehicle.setFuelCapacity(Integer.parseInt(event
-									.asCharacters().getData()));
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-							.equals(MILEAGE)) {
-						event = eventReader.nextEvent();
-						newVehicle.setMilage(Integer.parseInt(event.asCharacters()
-								.getData()));
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(PRICE)) {
-							event = eventReader.nextEvent();
-							newVehicle.setPrice(Integer.parseInt(event.asCharacters()
-									.getData()));
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(ROADTAX)) {
-							event = eventReader.nextEvent();
-							newVehicle.setRoadTax(Integer.parseInt(event
-									.asCharacters().getData()));
 						
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(AC)) {
-							event = eventReader.nextEvent();
-							((Car) newVehicle).setAC(Boolean.parseBoolean(event.asCharacters()
-									.getData()));
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(POWERSTEERING)) {
-							event = eventReader.nextEvent();
-							((Car) newVehicle).setPowerSteering(Boolean.parseBoolean(event
-									.asCharacters().getData()));
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(ACCESSORYKIT)) {
-							event = eventReader.nextEvent();
-							((Car) newVehicle).setAccessoryKit(event.asCharacters().getData());
-							
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(SELFSTART)) {
-							event = eventReader.nextEvent();
-							((Bike) newVehicle).setSelfStart(Boolean.parseBoolean(event.asCharacters().getData()));
-						}
-						else if (event.asStartElement().getName().getLocalPart()
-								.equals(HELMETPRICE)) {
-							event = eventReader.nextEvent();
-							((Bike) newVehicle).setHelmetPrice(Integer.parseInt(event.asCharacters().getData()));	
-							
-						}*/
-					// If we reach the end of an item element, we add it to the
 					
 					String key=event.asStartElement().getName().getLocalPart();
 					event = eventReader.nextEvent();
@@ -241,6 +154,7 @@ public class XmlParsing {
 
 				}
 				
+				// If we reach the end of an item element, we add it to the list
 				if (event.isEndElement()) {
 					EndElement endElement = event.asEndElement();
 					if (endElement.getName().getLocalPart() == (VEHICLEDETAIL)) {

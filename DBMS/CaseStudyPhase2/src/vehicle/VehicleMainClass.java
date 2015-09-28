@@ -10,14 +10,23 @@ import pojoClasses.Vehicle;
 import xml.XmlParsing;
 import HelperClasses.*;
 
+/**
+ * 
+ * @author Richa Mittal
+ * Description: Main class
+ */
 public class VehicleMainClass {
 	
 	
+	static Scanner sc = new Scanner(System.in);
+	
+	
+	/**
+	 * Main function
+	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
 		
-		/*Case study Assignment-1 part*/
+		
 		VehicleHelper vehicleHelper = new VehicleHelper();
 		VehicleDetailPrinter vehicleDetailPrinter = new VehicleDetailPrinter();
 
@@ -49,24 +58,25 @@ public class VehicleMainClass {
 		}
 		System.out.println("*****\n");
 		
-		/*Parsing data from XML file and inserting in database*/
+		/*Parsing data from XML file*/
 		XmlParsing read=new XmlParsing();
 		
-		/*Parsing data from XML file and inserting in database for car*/
+		/*Parsing data from XML file for car*/
 	    List<Vehicle> readCar = read.readConfig("../CaseStudyPhase2/src/xml/Car.xml");
 	    System.out.println("Reading data from Car XML file");
 	    
-	    for (Vehicle vehicleObject : readCar) 
-	      CarHelper.InsertIntoVehicle(vehicleObject);
+	    for (Vehicle vehicleObject : readCar) {
+	      HelperVehicle.InsertIntoVehicle(vehicleObject,"car");
+	    }
 	
-	    /* Parsing data from XML file and inserting in database for bike*/
+	    /* Parsing data from XML file for bike*/
 	    List<Vehicle> readBike = read.readConfig("../CaseStudyPhase2/src/xml/Bike.xml");
 	    System.out.println("Reading data from Bike XML file");
 	   
-	    for (Vehicle vehicleObject : readBike) 
-		   BikeHelper.InsertIntoVehicle(vehicleObject);
+	    for (Vehicle vehicleObject : readBike) {
+	    	HelperVehicle.InsertIntoVehicle(vehicleObject,"bike");
+	    }
 	    
-		sc.close();
 	   }
 
 }

@@ -10,48 +10,48 @@ import connection.ConnectionUtil;
 import pojoClasses.Vehicle;
 import pojoClasses.Bike;
 
-
+/**
+ * 
+ * @author Richa Mittal
+ * Description: This is the helper class for inserting bike into database
+ */
 public class BikeHelper {
 	
-public static void InsertIntoVehicle(Vehicle vehicle) {
-			/*Insert query for vehicle table*/
-			String query = "INSERT INTO vehicle VALUES('" + vehicle.getId() + "','"
-					+ vehicle.getCreated_by() + "','" + vehicle.getCreated_time()
-					+ "','" + vehicle.getMake() + "','" + vehicle.getModel() + "',"
-					+ vehicle.getEngineInCC() + "," + vehicle.getFuelCapacity()
-					+ "," + vehicle.getMilage() + "," + vehicle.getPrice() + ","
-					+ vehicle.getRoadTax() + ");";
-			System.out.println("-Inserting data into 'vehicle' table");
-			insertIntoDatabase(query);
-			
-				/*Insert query for bike table*/
-				String queryForBike = "INSERT INTO bike (se"
-						+ "lf_start,helmet_price,ID) VALUES('"
-						+ ((Bike) vehicle).getSelfStart()
-						+ "',"
-						+ ((Bike) vehicle).getHelmetPrice()
-						+ ",'"
-						+ vehicle.getId() + "');";
-				
-				System.out.println("-Inserting data into 'bike' table");
-				insertIntoDatabase(queryForBike);
-				
-	}
 
-	private static void insertIntoDatabase(String query) {
+	/**
+	 * inserts bike into database using prepared statement
+	 */
+	static boolean insertIntoBike(Vehicle vehicle) {
+
+		
+		/*Insert query for bike table*/
+		String queryForBike = "INSERT INTO bike (self_start, helmet_price, id)"
+				+ " VALUES (?, ?, ?); ";
+		System.out.println("-Inserting data into 'bike' table");
 
 		Connection con = null;
 		ResultSet rs = null;
 		PreparedStatement preStmt = null;
 
+		int result=0;
 		ConnectionUtil connectionUtil = new ConnectionUtil();
 		con = connectionUtil.getConnection();
 		try {
 			/*creating statement*/
-			preStmt = con.prepareStatement(query);
+			preStmt = con.prepareStatement(queryForBike);
+			preStmt.setBoolean(1,((Bike) vehicle).getSelfStart());
+			preStmt.setInt(2,((Bike) vehicle).getHelmetPrice());
+			preStmt.setString(3,((Bike) vehicle).getId());
+			
 			/*executing query*/
-			preStmt.execute();
+			result = preStmt.executeUpdate();
+	
 			System.out.println("--Data Inserted");
+			
+			if(result>0)
+				return true;
+			else
+				return false;
 
 		} 
 		catch(SQLIntegrityConstraintViolationException e) {
@@ -82,6 +82,7 @@ public static void InsertIntoVehicle(Vehicle vehicle) {
 				e.printStackTrace();
 			}
 		}
+		return false;
 	}
 
 }
