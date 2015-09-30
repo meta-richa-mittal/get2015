@@ -1,0 +1,51 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Form</title>
+		<link rel="stylesheet" href="C:/Users/Richa Mittal/workspace/HTMLAssignment2/WebContent/FormStyle.css" type="text/css">
+	</head>
+	<body>
+		<form id="details" autocomplete="off">
+			<header>Registration Form </header>
+				<section>
+					<table>
+						<tr>
+							<td><label for="name">Name:</label></td>
+							<td><input type="text" id="name" name="username" placeholder="User Name" required autofocus></td>
+						</tr>
+						<tr>
+							<td><label for="email">E-Mail:</label></td>
+							<td><input type="email" id="email" name="email" placeholder="EMail" required ></td>
+						</tr>
+						<tr>
+							<td><label for="dob">DOB</label></td>
+							<td><input type="date" id="dob" name="dob" placeholder="DateOfBirth" required ></td>
+						</tr>
+						<tr>
+							<td><label for="ranking">Rank Yourself in Programming:</label></td>
+							<td><input id="ranking" type="range" min="0" value="5" max="10" step="1" placeholder="Ranking"></td>
+						</tr>
+						<tr>
+							<td><label for="countries">Country:</label></td>
+							<td><input type="text" list="countries" id="countries" placeholder="Country">
+								<datalist id="countries">
+									<option value="Afghanistan">
+									<option value="Albania">
+									<option value="India">
+									<option value="United Kingdom">
+									<option value="United States">
+									<option value="Vanuatu">
+									<option value="Vatican City">
+									<option value="Yemen">
+									<option value="Zambia">
+									<option value="Zimbabwe">
+								</datalist></td>
+						</tr>
+						<tr>
+							<td></td><td><label for="submit"><input type="submit" id="submit" name="submit" ></label></td>
+						</tr>
+					</table>
+				</section>
+		</form>	
+	</body>
+</html>

@@ -1,0 +1,54 @@
+@CHARSET "ISO-8859-1";
+
+
+body {
+	background-color: #FFFF99;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 50%;
+}
+
+
+header {
+	background-color: green;
+	margin-top: 10%;
+	font-size: x-large;
+	font-weight: bold;
+	font-family: cursive;
+	font-style: italic;
+	color: white;
+	padding: 20px;
+}
+
+
+section {
+	font-size: large;
+	border: double white 5px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding: 20px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	font-weight: bold;
+}
+
+
+td {
+	width: 20%;
+	padding-top: 20px;
+}
+
+#submit {
+	text-align: right;
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	font-weight: bold;
+}
