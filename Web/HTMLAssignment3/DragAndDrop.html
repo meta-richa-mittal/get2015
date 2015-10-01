@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+			<title>Drag And Drop API Example</title>
+			<style>
+				#section1 {
+					margin-left: auto;
+					margin-right: auto;
+					display: block;
+					background-color: blue;
+					height: 200px;
+					width: 200px;
+					color: white;
+					
+				}
+				
+				#section2 {
+					margin-left: auto;
+					margin-right: auto;
+					display: block;
+					background-color: gray;
+					height: 120px;
+					width: 120px;
+					margin-top: 20px;
+					color: white;
+				}
+				
+				p {
+					padding-top: 10px;
+					text-align: center;
+				}
+			</style>
+	</head>
+	<body>
+		<section id="section1" ondrop="drop(event)" ondragover="allowDrop(event)" >
+			<p>Target Section</p>
+		</section>
+		
+		<section id="section2" ondragstart="drag(event)" draggable="true">
+			<p>Sample Section</p>
+		</section>
+		
+		<script>
+			function allowDrop(ev) {
+			    ev.preventDefault();
+			}
+	
+			function drag(ev) {
+			    ev.dataTransfer.setData("text/html", ev.target.id);
+			}
+	
+			function drop(ev) {
+			    ev.preventDefault();
+			    var data = ev.dataTransfer.getData("text/html");
+			    ev.target.appendChild(document.getElementById(data));
+			}
+		</script>
+	</body>
+</html>
