@@ -1,5 +1,10 @@
 function createTable() {
+	
 	var t2=document.getElementById("table2");
+	var t3=document.getElementById("table3");
+	t2.innerHTML="";
+	t3.innerHTML="";
+	t3.style.border="0px";
 	var n=document.getElementById("textbox1").value;
 	var row = t2.insertRow(-1);
 	var cell1 = row.insertCell(0);
@@ -147,5 +152,8 @@ function createGraph() {
 			}
 			
 		}
+		var butt2=document.getElementById("button2");
+		butt2.disabled=true;
 	}
+	
 }
