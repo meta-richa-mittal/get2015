@@ -1,5 +1,8 @@
 function createTable() {
-	
+	if(document.getElementById("textbox1").value=="") {
+		alert("Please enter a value");
+		return false;
+	}
 	var t2=document.getElementById("table2");
 	var t3=document.getElementById("table3");
 	t2.innerHTML="";
@@ -68,6 +71,7 @@ function createGraph() {
 	var count=0;
 	
 	for(var i=0;i<n;i++) {
+		
 		var min1=document.getElementById("min"+i).value;
 		var max1=document.getElementById("max"+i).value;
 		var min=parseInt(min1);
@@ -142,14 +146,17 @@ function createGraph() {
 			
 			var min=document.getElementById("min"+i).value;
 			var max=document.getElementById("max"+i).value;
-			
-			var lower=++min;
-			var upper=++max;
-			for(var j=lower;j<=upper;j++) {
-				
-				r.cells[j].style.backgroundColor = "red";
-				
+			if(min!="" && max!="") {
+				var lower=++min;
+				var upper=++max;
+				for(var j=lower;j<=upper;j++) {
+					
+					r.cells[j].style.backgroundColor = "red";
+					
+				}
 			}
+			
+			
 			
 		}
 		var butt2=document.getElementById("button2");
