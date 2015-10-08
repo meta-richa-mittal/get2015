@@ -103,6 +103,9 @@ function validate()
 		document.getElementById("city").style.borderColor="initial";
 		document.getElementById("addressLine1").style.borderColor="initial";
 		
+		document.getElementById("acceptCondition").checked=false;
+		document.getElementById("submitButton").disabled = true;
+		
 	}
 	else 
 	{
