@@ -83,6 +83,20 @@ function createGraph() {
 			document.getElementById("min"+i).focus();
 			break;
 		}
+		else if(min<0) {
+			count=1;
+			alert("minimum value can not be less than 0");
+			document.getElementById("min"+i).style.borderColor="red";
+			document.getElementById("min"+i).focus();
+			break;
+		}
+		else if(max>10) {
+			count=1;
+			alert("maximum value can not be greater than 10");
+			document.getElementById("max"+i).style.borderColor="red";
+			document.getElementById("max"+i).focus();
+			break;
+		}
 	}
 	
 		
@@ -146,6 +160,8 @@ function createGraph() {
 			
 			var min=document.getElementById("min"+i).value;
 			var max=document.getElementById("max"+i).value;
+			min=parseInt(min);
+			max=parseInt(max);
 			if(min!="" && max!="") {
 				var lower=++min;
 				var upper=++max;
