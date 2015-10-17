@@ -11,6 +11,6 @@
     <url-pattern>/Form</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>RegistrationForm.html</welcome-file>
+    <welcome-file>RegistrationForm.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
