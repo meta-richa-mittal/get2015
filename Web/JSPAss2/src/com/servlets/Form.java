@@ -5,6 +5,7 @@ package com.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,31 +16,66 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.util.ConnectionUtil;
 
 public class Form extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/registration";
+	private static final String USER = "root";
+	private static final String PASSWORD = "mysql";
+	String errorMsg="";
+	Object errorInfo=null;
+			
+	private Connection con = null;
+	
 	
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
+
+		/* register driver */
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} 
+		catch (ClassNotFoundException e) {
+			
+			errorMsg="Error In Login";
+			errorInfo=e;
+			req.setAttribute("errorInfo", errorInfo);
+			req.setAttribute("errorMsg", errorMsg);
+			RequestDispatcher rd = req.getRequestDispatcher("Error.jsp");
+			rd.forward(req, res);
+		}
+		
+		/* open connection */
+		try {
+			con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+		} 
+		catch (SQLException se) {
+			errorMsg="Error In Login";
+			errorInfo=se;
+			req.setAttribute("errorInfo", errorInfo);
+			req.setAttribute("errorMsg", errorMsg);
+			RequestDispatcher rd = req.getRequestDispatcher("Error.jsp");
+			rd.forward(req, res);
+		}
+		
+		
+		
+		try {
 		PrintWriter pw = res.getWriter();
 		boolean flag=true;
 		String msg="";
 		res.setContentType("text/html");
-		//pw.println("*****This is JSP page*****<br><br>");
-		
-		Connection con = null;							// opening connection
-		PreparedStatement stmt = null;
-		
-		ConnectionUtil conUtil = new ConnectionUtil();	
-		con = conUtil.getConnection();	
+		PreparedStatement stmt = null;	
+
 		ResultSet rs=null;
 		
 		String email= req.getParameter("emailId");
 		String password= req.getParameter("password");
-		//pw.println(email);
-		//pw.println(password);
 			
 		
 		if(email == "" || email == null) 
@@ -57,8 +93,8 @@ public class Form extends HttpServlet {
 	   
 		
 		if(flag==true){
-			try {
-				String query="SELECT password FROM registrationData WHERE emailId = ?;";
+		
+				String query="SELECT * FROM registrationData WHERE emailId = ?;";
 				stmt=con.prepareStatement(query);
 				stmt.setString(1, email);
 				rs=stmt.executeQuery();
@@ -68,7 +104,9 @@ public class Form extends HttpServlet {
 				}
 				else {
 					if(password.equals(rs.getString("password"))) {
-						pw.println("<h3>*Login successful</h3><br><br>");
+						req.setAttribute("name", rs.getString("userName"));
+						RequestDispatcher rd = req.getRequestDispatcher("LoginSuccess.jsp");
+						rd.forward(req, res);
 					}
 					else {
 						msg="Incorrect Password";
@@ -78,14 +116,16 @@ public class Form extends HttpServlet {
 					}
 				}
 			}
-			catch(SQLException se) {
-				
-				pw.println("<h3>*Error in Login</h3><br><br>");
-				se.printStackTrace();
-			}
-			
 		}
-		
+		catch(SQLException se) {
+			
+			errorMsg="Error In Login";
+			errorInfo=se;
+			req.setAttribute("errorInfo", errorInfo);
+			req.setAttribute("errorMsg", errorMsg);
+			RequestDispatcher rd = req.getRequestDispatcher("Error.jsp");
+			rd.forward(req, res);
+		}	
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
