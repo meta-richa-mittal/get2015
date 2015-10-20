@@ -1,0 +1,6 @@
+Person,Richa,Jaipur,richa@gmail.com,9876543210,abc,absac,asd,carrom
+Person,Nidhi,Jaipur,nidhi@gmail.com,9876543211,abc,wqd,sas,sahsxd
+Person,Chetna,Jaipur,chetna@gmail.com,9876543212,abc,jwsh,had,kwdhysh
+Org,JECRC,Jaipur,jecrc@gmail.com,3894327,abc,btech/mca,asjhc
+Org,abc,Jaipur,abc@gmail.com,97343210,abc,jhgsa/sahhj,sackb
+Org,gshd,dsad,o@gmail.com,435767,abc,dfjndk,cdjkcnb
