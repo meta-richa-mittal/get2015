@@ -6,6 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: contains main function to run the factory class
+ *
+ */
 public class FactoryRunner {
 	static Scanner sc=new Scanner(System.in);
 	public static void main(String args[]) {

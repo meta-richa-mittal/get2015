@@ -3,11 +3,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
+/**
+ * 
+ * @author Richa Mittal
+ * Description: contains function to add messages to log file
+ * 				and contains main function
+ *
+ */
 public class UseLogger {
   private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
   
 
+  /**
+   * function will generate exceptions and write them to a file
+   */
   public void doSomeThingAndLog() {
     // set the LogLevel to Severe, only severe Messages will be written
 	  try {
@@ -40,6 +49,11 @@ public class UseLogger {
     
   }
 
+  
+  /**
+   * main function
+   * @param args
+   */
   public static void main(String[] args) {
 	    UseLogger tester = new UseLogger();
 	    MyLogger.getInstance();

@@ -1,5 +1,12 @@
 package Assignment2;
 
+
+/**
+ * 
+ * @author Richa Mittal
+ * Description: defines an employee and contains its abstract getters and setters
+ *
+ */
 public abstract class Employee {
 
 	protected String name;
