@@ -44,16 +44,16 @@ public class LeaveRequest {
 	 * @param noOfLeaves
 	 */
 	private static void applyForLeave(int noOfLeaves) {
-		Approver shubham = new Mentor();
-		shubham.setNoOfLeaves(noOfLeaves);
-		Approver amitabh = new SeniorMentor();
-		amitabh.setNoOfLeaves(noOfLeaves);
-		Approver deepika = new HRManager();
-		deepika.setNoOfLeaves(noOfLeaves);
-		shubham.setSuccessor(amitabh);
-		amitabh.setSuccessor(deepika);
-		deepika.setSuccessor(null);
-		shubham.processRequest();
+		Approver mentor = new Mentor();
+		mentor.setNoOfLeaves(noOfLeaves);
+		Approver seniorMentor = new SeniorMentor();
+		seniorMentor.setNoOfLeaves(noOfLeaves);
+		Approver hrManager = new HRManager();
+		hrManager.setNoOfLeaves(noOfLeaves);
+		mentor.setSuccessor(seniorMentor);
+		seniorMentor.setSuccessor(hrManager);
+		hrManager.setSuccessor(null);
+		mentor.processRequest();
 	}
 
 }
