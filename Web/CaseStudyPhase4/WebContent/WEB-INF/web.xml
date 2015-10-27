@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+  
+    <servlet-name>CreateCar</servlet-name>
+    <servlet-class>com.car.controller.CreateCar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCar</servlet-name>
+    <url-pattern>/CreateCar</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.car.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>com.car.controller.Search</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/Search</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>CarDetailController</servlet-name>
+    <servlet-class>com.car.controller.CarDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CarDetailController</servlet-name>
+    <url-pattern>/CarDetailController</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>CarEditController</servlet-name>
+    <servlet-class>com.car.controller.CarEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CarEditController</servlet-name>
+    <url-pattern>/CarEditController</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>RedirectController</servlet-name>
+    <servlet-class>com.car.controller.RedirectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RedirectController</servlet-name>
+    <url-pattern>/RedirectController</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>com.car.controller.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/LogoutController</url-pattern>
+  </servlet-mapping>
+  
+  
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.car.authentication.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/AuthenticationFilter</url-pattern>
+  </filter-mapping>
+  
+  
+  <welcome-file-list>
+    <welcome-file>view/index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

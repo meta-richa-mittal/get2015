@@ -1,0 +1,113 @@
+body {
+				background-color: #b0c4de;
+				background-image: url('/images/car2.jpg');
+				background-repeat: no-repeat;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+}
+
+
+#header p {
+	color: white;
+	font-family: freestyle script;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+
+
+#header {
+	margin-top: 50px;
+	margin-left:5%;
+	height: 100px;
+	width: 15%;
+	transform: skewX(-15deg);
+	-moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	-ms-transform: skewX(-15deg);
+	background-color: maroon;
+	float: left;
+	border: solid black 1px;
+	text-align: center;
+}
+
+
+#menuBar {
+	margin-top: 20px;
+	height: 75px;
+	width: 75%;
+	transform: skewX(-15deg);
+	-moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	-ms-transform: skewX(-15deg);
+	background-color: gray;
+	float: left;
+	border: solid black 1px;
+	color: white;
+	font-size: 25px;
+	font-family: lucida handwritting;
+	font-weight: bold;
+	
+}
+
+
+#space {
+	padding-left: 20%;
+	
+}
+ 
+ 
+ nav ul li {
+	display: inline;
+	padding-left: 20%;
+}
+
+nav a:link { 
+    color: white;
+}
+
+nav a:visited {
+	color: white;
+}
+
+nav a:hover { 
+    background-color: maroon;
+}
+
+nav a:active {
+	color: #0000FF;
+}
+
+
+#user {
+	margin-top: 5px;
+	margin-right:8%;
+	height: 45px;
+	width: 10%;
+	transform: skewX(-15deg);
+	-moz-transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	-ms-transform: skewX(-15deg);
+	float: right;
+	
+}
+
+
+table {
+	border: none;
+	border-spacing: 10px;
+    border-collapse: separate;
+	text-align: center;
+	font-size: 20px;
+	color: white;
+	padding: auto;
+}
+
+table button {
+	background-color: maroon;
+	color: white;
+	font-size: 20px;
+}
+
