@@ -74,6 +74,11 @@
 			%>
 		</div></center>
 	<header><p><%
+	
+	if(request.getAttribute("vehicleDetails")==null) {
+		response.sendRedirect("search.jsp");	
+	}
+	else {
 	Vehicle vehicle = (Vehicle)request.getAttribute("vehicleDetails");
 	
 
@@ -135,5 +140,6 @@
 				</table>
 			</form>
 		</section>
+		<%} %>
 </body>
 </html>

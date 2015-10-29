@@ -113,6 +113,10 @@
 			
 					
 					<%
+					if(request.getAttribute("list")==null) {
+						response.sendRedirect("search.jsp");	
+					}
+					else {
 					List<Vehicle> listOfVehicles = (List<Vehicle>)request.getAttribute("list");
 					if(listOfVehicles.size()==0) {%>
 					<center><% out.println("No Cars Found!!");%></center>
@@ -133,6 +137,7 @@
 			
 							<% 
 					   }
+					}
 							%>
 					</tr>
 				</table>

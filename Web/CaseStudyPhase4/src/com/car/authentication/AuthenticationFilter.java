@@ -2,6 +2,8 @@ package com.car.authentication;
 
 import java.io.IOException;
  
+import java.io.PrintWriter;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
  
-@WebFilter("/AuthenticationFilter")
+
 public class AuthenticationFilter implements Filter {
  
     private ServletContext context;
@@ -28,16 +30,21 @@ public class AuthenticationFilter implements Filter {
  
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-         
+        PrintWriter out=response.getWriter();
+		
         String uri = req.getRequestURI();
         this.context.log("Requested Resource::"+uri);
+        
+        System.out.print(uri);
          
         HttpSession session = req.getSession(false);
          
-        if(session == null && !(uri.endsWith("jsp") || uri.endsWith("LoginController"))){
+        if(session.getAttribute("userId") == null){
+        	out.println("Unauthorized access request");
             this.context.log("Unauthorized access request");
             res.sendRedirect("admin.jsp");
-        }else{
+        }
+        else{
             // pass the request along the filter chain
             chain.doFilter(request, response);
         }
