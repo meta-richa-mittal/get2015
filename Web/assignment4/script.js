@@ -1,40 +1,31 @@
-$(document).ready(alterColor);
+$(document).ready(init);
 
-function alterColor() {
-	
-	$( "tr:even" ).css( "background-color", "#bbbbff" );
-	
-	$( "tr:odd" ).css( "background-color", "red" );
-	
-	$( "tr:even" ).on("mouseenter ",changeColorEvenOn);
-	
-	$( "tr:odd" ).on("mouseenter ",changeColorOddOn);
-	
-	$( "tr:even" ).on("mouseleave ",changeColorEvenOff);
-	
-	$( "tr:odd" ).on("mouseleave ",changeColorOddOff);
-}
-
-function changeColorEvenOn() {
-	
-	$( "tr:even" ).css( "background-color", "lightpink" );
+function init() {
+	temp="";
+	temp = $('#details').text();
+	$('input#name').change(name);
+	$('input#age').change(age);
+	$('textarea#address').change(address);
 	
 }
 
-function changeColorOddOn() {
-	
-	$( "tr:odd" ).css( "background-color", "green" );
-	
+function name() {
+	$('#name').animate({backgroundColor: "red"}, 1000);
+	temp = temp.concat(" Name:  "+$('input#name').val()+"<br/>");
+	document.getElementById("details").innerHTML = temp;
+	$('#name').animate({backgroundColor: "white"}, 1000);
 }
 
-function changeColorEvenOff() {
-	
-	$( "tr:even" ).css( "background-color", "#bbbbff" );
-	
+function age() {
+	$('#age').animate({backgroundColor: "red"}, 1000);
+	temp = temp.concat(" Age:  "+$('input#age').val()+"<br/>");
+	document.getElementById("details").innerHTML = temp;
+	$('#age').animate({backgroundColor: "white"}, 1000);
 }
 
-function changeColorOddOff() {
-	
-	$( "tr:odd" ).css( "background-color", "red" );
-	
+function address() {
+	$('#address').animate({backgroundColor: "red"}, 1000);
+	temp = temp.concat(" Address:  "+$('textarea#address').val()+"<br/>");
+	document.getElementById("details").innerHTML = temp;
+	$('#address').animate({backgroundColor: "white"}, 1000);
 }

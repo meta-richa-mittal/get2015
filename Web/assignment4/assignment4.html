@@ -2,20 +2,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Assignment 4</title>
+<title>Dynamic Change Show</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="script.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<header>Table with different colors for alternate rows...<br><span>Hover To Change Color</span></header><br>
-
-	<table>
-	<tr><td></td></tr>
-	<tr><td></td></tr>
-	<tr><td></td></tr>
-	<tr><td></td></tr>
-	<tr><td></td></tr>
-	</table>
+	<div id="wrapper">
+		<h2>Employee Details</h2>
+		<table>
+			<tr><td>Name:</td><td><input type="text" id="name" /></td></tr>
+			<tr><td>Age:</td><td><input type="text" id="age" pattern="[0-9 ]+" /></td></tr>
+			<tr><td>Address:</td><td><textarea rows="4" cols="22" id="address"></textarea></td></tr>
+		</table>
+		<div id="details"></div>	
+	</div>
 </body>
 </html>

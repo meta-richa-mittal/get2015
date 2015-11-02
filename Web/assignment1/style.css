@@ -4,34 +4,21 @@ body {
 		background-color: white;
 	
 	}
-	header {
-		color: blue;
-		text-align: center;
-		margin: auto;
-		margin-top:10%;
-		border: darkgray solid 2px;;
-		padding-bottom: 20px;
-		width: 30%;
-		padding-top: 20px;
-		background-color: lightgray;
-		
-	}
 	section {
-						
+			padding: 20px;			
 			margin: auto;
-			margin-top: 20px;
+			margin-top: 15%;
 			border-top-left-radius: 10px;
 			border-top-right-radius: 10px;
-			
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			border: Gray solid 1px;
+			width: 30%;
 			text-align: center;
 	}
-	.button {
+	.hello {
 		background-color: lightblue;
-		box-shadow: 1px red;
 		color: white;
-		margin-top: 30px;
-		height: 30px;
-		width: 70px;
 		font-weight: bold;
 		
 	}

@@ -5,19 +5,36 @@ body {
 	
 	}
 	
-div {
-	border: solid darkGray 1px;
-	margin: auto;
-	text-align: center;
-	padding: 10px;
-	color: white;
+#div1 {
+	margin-top: 100px;
+	border: solid red 1px;
+	background-color: lightblue;
+	height: 100px;
+	width: 100px;
+	margin-left: 10%;
+	position: relative;
+
 }
 
 header {
 	padding: 20px;
 }
 
+#div2 {
+	position: relative;
+	margin: auto;
+	margin-top: 50px;
+	margin-left: 10%;
+	padding: 50px;
+	
+}
 
+input {
+	margin: 20px;
+	width: 100px;
+	background-color: pink;
+	color: white;
+}
 
 table {
 	margin: auto;

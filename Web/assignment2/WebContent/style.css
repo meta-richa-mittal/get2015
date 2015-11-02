@@ -8,22 +8,23 @@ body {
 
 #wrapper {
 	padding-top : 50px;
-	margin: auto;
-	height: 550px;
+	position : relative;
+	float : left;
+	left : 500px;
+	height: 450px;
 	width:  600px;
 	background-color: lightgray;
 	border: 2px solid black;
 	text-align:  center;
 }
 
-table {
-	margin: auto;
-}
-
 #details {
-	
-	margin : auto;
-	margin-top: 70px;
-	width: 300px;
+	position : relative;
+	left : 80px;
+	margin : 100px;
+	padding : 20px;
+	height: 150px;
+	width: 200px;
+	border: 2px solid black;
 	background-color: #ffffff;
 }
