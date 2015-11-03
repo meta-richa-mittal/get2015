@@ -21,7 +21,7 @@ public class EmployeeInfoService {
 	
 	
 	@GET
-	@Produces("application/xml")
+	@Produces("text/plain")
 	@Path("/employees")
 	public String getEmployees() {
 		String employees= dbHelper.getEmployees();
@@ -30,7 +30,7 @@ public class EmployeeInfoService {
 	
 	
 	@GET
-	@Produces("application/xml")
+	@Produces("text/plain")
 	@Path("{c}")
 	public String getEmployeeByName(@PathParam("c") String c) {
 		String employee;
@@ -45,7 +45,7 @@ public class EmployeeInfoService {
 	}
 
 	@DELETE
-	@Produces("application/xml")
+	@Produces("text/plain")
 	@Path("{c}")
 	public String getEmployeeById(@PathParam("c") Integer c) {
 		
@@ -55,7 +55,7 @@ public class EmployeeInfoService {
 	
 	
 	@POST
-	@Produces("application/xml")
+	@Produces("text/plain")
 	@Path("{c1}/{c2}/{c3}/{c4}/{c5}/{c6}")
 	public String createEmployee(@PathParam("c1") Integer c1, @PathParam("c2") String c2, @PathParam("c3") String c3, @PathParam("c4") String c4, @PathParam("c5") String c5, @PathParam("c6") Double c6) {
 		String employee;

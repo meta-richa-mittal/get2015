@@ -31,7 +31,7 @@ public class DbHelper {
 				resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					i++;
-					result+= i+".)\n{\nId:\t"+resultSet.getInt(1)+"\nName:\t"+resultSet.getString(2)+"\nEmail:\t"+resultSet.getString(3)+"\nDOB:\t"+resultSet.getString(4)+"\nAddress:\t{\nCity:\t"+resultSet.getString(5)+"\n}\nSalary:\t"+resultSet.getDouble(6)+"\n}\n";
+					result+= i+".)\nId:\t"+resultSet.getInt(1)+"\nName:\t"+resultSet.getString(2)+"\nEmail:\t"+resultSet.getString(3)+"\nDOB:\t"+resultSet.getString(4)+"\nAddress:\t"+resultSet.getString(5)+"\nSalary:\t"+resultSet.getDouble(6)+"\n";
 				}
 			} catch(SQLException e) {
 				System.out.println("Error reading employees");
@@ -52,7 +52,7 @@ public class DbHelper {
 				preparedStatement.setInt(1, id);
 				resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
-					result+= "{\nId:\t"+resultSet.getInt(1)+"\nName:\t"+resultSet.getString(2)+"\nEmail:\t"+resultSet.getString(3)+"\nDOB:\t"+resultSet.getString(4)+"\nAddress:\t{\nCity:\t"+resultSet.getString(5)+"\n}\nSalary:\t"+resultSet.getDouble(6)+"\n}\n";
+					result+= "Id:\t"+resultSet.getInt(1)+"\nName:\t"+resultSet.getString(2)+"\nEmail:\t"+resultSet.getString(3)+"\nDOB:\t"+resultSet.getString(4)+"\nAddress:\t"+resultSet.getString(5)+"\nSalary:\t"+resultSet.getDouble(6)+"\n";
 				}
 			} catch(SQLException e) {
 				System.out.println("Error reading employee by Id");
@@ -75,7 +75,7 @@ public class DbHelper {
 				resultSet = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					i++;
-					result+= i+".)\n{\nId:\t"+resultSet.getInt(1)+"\nName:\t"+resultSet.getString(2)+"\nEmail:\t"+resultSet.getString(3)+"\nDOB:\t"+resultSet.getString(4)+"\nAddress:\t{\nCity:\t"+resultSet.getString(5)+"\n}\nSalary:\t"+resultSet.getDouble(6)+"\n}\n";
+					result+= i+".)\nId:\t"+resultSet.getInt(1)+"\nName:\t"+resultSet.getString(2)+"\nEmail:\t"+resultSet.getString(3)+"\nDOB:\t"+resultSet.getString(4)+"\nAddress:\t"+resultSet.getString(5)+"\nSalary:\t"+resultSet.getDouble(6)+"\n";
 					
 				}
 			} catch(SQLException e) {
