@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	padding-top : 80px;
+	background-color: lightgray ;
+	text-align:  center;
+	color: maroon;
+	
+}
+
+
+table {
+	 cellspacing: 20;
+	 margin: auto;
+	padding: auto;
+}
