@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 3</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<style>
+.navbar-default {
+	padding: 10px;
+}
+
+body {
+	padding: 20px;
+}
+
+</style>
+<script type="text/javascript">
+	movieData = {};
+	movieData = [{MovieTitle: 'M1', Genre: 'Action', Director: 'director A'},
+	             {MovieTitle: 'M2', Genre: 'Cartoon', Director: 'director B'},
+				 {MovieTitle: 'M3', Genre: 'Comedy', Director: 'director C'},
+				 {MovieTitle: 'M4', Genre: 'Action', Director: 'director D'},
+				 {MovieTitle: 'M5', Genre: 'War', Director: 'director E'},
+				 {MovieTitle: 'M6', Genre: 'Cartoon', Director: 'director F'},
+				 {MovieTitle: 'M7', Genre: 'Thriller', Director: 'director G'},
+				 {MovieTitle: 'M8', Genre: 'Fantasy', Director: 'director H'},
+				 {MovieTitle: 'M9', Genre: 'Comedy', Director: 'director I'},
+				 {MovieTitle: 'M10', Genre: 'Action', Director: 'director J'},
+				 {MovieTitle: 'M11', Genre: 'Horror', Director: 'director K'},
+				 {MovieTitle: 'M12', Genre: 'Fantasy', Director: 'director L'},
+				 {MovieTitle: 'M13', Genre: 'Comedy', Director: 'director M'},
+				 {MovieTitle: 'M14', Genre: 'Thriller', Director: 'director N'},
+				 {MovieTitle: 'M15', Genre: 'Action', Director: 'director O'},
+				 {MovieTitle: 'M16', Genre: 'Horror', Director: 'director P'},
+				 {MovieTitle: 'M17', Genre: 'War', Director: 'director Q'},
+				 {MovieTitle: 'M18', Genre: 'Fantasy', Director: 'director R'},
+				 {MovieTitle: 'M19', Genre: 'Musicals', Director: 'director S'} 
+				];
+	
+	function clear1() {
+		$( '#movieTable' ).hide();
+		$( 'div#nav' ).hide();
+	}
+
+	
+	function reviews() {
+		addTable();
+		paging();
+	}
+	
+	function addTable() {
+		var myTable = document.getElementById("movieTable");
+		
+		while(document.getElementById("movieTable").rows.length > 0) {
+			
+			document.getElementById("movieTable").deleteRow(0);
+			  
+			}
+		
+		$( '#movieTable' ).show();
+		
+		var table = $('#movieTable');
+		
+		table.append('<tr><td>' + "Movie Title" + '</td><td>' + 'Genre' + '</td><td>' + 'Director' + '</td></tr>');
+		
+		for(var i=0;i< movieData.length; i++) {
+			table.append('<tr><td>' + movieData[i].MovieTitle + '</td><td>' + movieData[i].Genre + '</td><td>' + movieData[i].Director + '</td></tr>');
+		}
+	}
+	
+	function paging(){
+	    $('#movieTable').after('<div id="nav" style="float:right"></div>');
+	    $( 'div#nav' ).empty();
+	    var rowsShown = 5;
+	    var rowsTotal = $('#movieTable tbody tr').length;
+	    var numPages = rowsTotal/rowsShown;
+	    for(i = 0;i < numPages;i++) {
+	        var pageNum = i + 1;
+	        $('#nav').append('<div style="width:40px;border:2px solid gray;float:left;text-align:center;margin-left:5px;"><a href="#" rel="'+i+'">'+pageNum+'</a><div>');
+	    }
+	    $('#movieTable tbody tr').hide();
+	    $('#movieTable tbody tr').slice(0, rowsShown+1).show();
+	    $('#nav a:first').addClass('active');
+	    $('#nav a').bind('click', function(){
+
+	        $('#nav a').removeClass('active');
+	        $(this).addClass('active');
+	        var currPage = $(this).attr('rel');
+	        var startItem = (currPage * rowsShown)+1;
+	        var endItem = startItem + rowsShown;
+	        $('#movieTable tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+	                css('display','table-row').animate({opacity:1}, 300);
+	    });
+	}
+	
+	function search() {
+		var myTable = document.getElementById("movieTable");
+		
+		while(document.getElementById("movieTable").rows.length > 0) {
+			
+			document.getElementById("movieTable").deleteRow(0);
+			  
+			}
+		var searchId = document.getElementById("srch-term");
+		var searchMovie = searchId.value;
+		var res = "";
+		$( '#movieTable' ).show();
+		$( 'div#nav' ).hide();
+		
+		var table = $('#movieTable');
+		flag=0;
+		table.append('<tr><td>' + "Movie Title" + '</td><td>' + 'Genre' + '</td><td>' + 'Director' + '</td></tr>');
+		for(var i=0;i< movieData.length; i++) {
+			if(movieData[i]["MovieTitle"].toLowerCase() == searchMovie.toLowerCase()) {
+				table.append('<tr><td>' + movieData[i].MovieTitle + '</td><td>' + movieData[i].Genre + '</td><td>' + movieData[i].Director + '</td></tr>');
+				flag=flag+1;
+				
+			}
+		}	
+		if(flag==0) {
+			table.append('<tr><td colspan="3" style="align: center;">' + "No Movie Found" + '</td></tr>');
+		}
+	}
+	
+	function searchForSmall() {
+		var myTable = document.getElementById("movieTable");
+		
+		while(document.getElementById("movieTable").rows.length > 0) {
+			
+			document.getElementById("movieTable").deleteRow(0);
+			  
+			}
+		var searchId = document.getElementById("srchSmall");
+		var searchMovie = searchId.value;
+		var res = "";
+		$( '#movieTable' ).show();
+		$( 'div#nav' ).hide();
+		
+		var table = $('#movieTable');
+		flag=0;
+		table.append('<tr><td>' + "Movie Title" + '</td><td>' + 'Genre' + '</td><td>' + 'Director' + '</td></tr>');
+		for(var i=0;i< movieData.length; i++) {
+			if(movieData[i]["MovieTitle"].toLowerCase() == searchMovie.toLowerCase()) {
+				table.append('<tr><td>' + movieData[i].MovieTitle + '</td><td>' + movieData[i].Genre + '</td><td>' + movieData[i].Director + '</td></tr>');
+				flag=flag+1;
+				
+			}
+		}	
+		if(flag==0) {
+			table.append('<tr><td colspan="3" style="align: center;">' + "No Movie Found" + '</td></tr>');
+		}
+	}
+	
+</script>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar navbar-inverse hidden-sm " role="navigation" id="mainNav">
+			<div class = "navbar-header">
+			
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      			<a style="width: 100px;" onclick="clear1()" class = "navbar-brand" href = "assignment3.html">Metacube</a>
+   			</div>
+   			
+   			<div class="collapse navbar-collapse " id="myNavbar">
+      			<ul class = "nav navbar-nav">
+		         <li class = "active"><a onclick="clear1()">Home</a></li>
+		         <li><a onclick="clear1()">About</a></li>
+		          <li><a onclick="clear1()" id="contact">Contact Us</a></li>
+		          <li><a href = "movieForm.html">Movie Form</a></li>
+            	 <li><a onclick="reviews()" id="review">Movie Reviews</a></li>
+		            <li class = "dropdown">
+            <a class = "dropdown-toggle" data-toggle = "dropdown">
+               CSS 
+               <b class = "caret"></b>
+            </a>
+            
+            <ul class = "dropdown-menu">
+               		<li><a onclick="clear1()">Button</a></li>
+               		<li class = "divider"></li>
+                	<li><a onclick="clear1()">Panel</a></li>
+               		<li><a onclick="clear1()">Grid</a></li>
+               
+               		<li class = "divider"></li>
+               		<li><a onclick="clear1()">Link</a></li>
+                	<li><a onclick="clear1()">Pagination</a></li>
+            
+	            	<li class = "divider"></li>
+	               <li><a onclick="clear1()">Progress Bar</a></li>
+	          </ul>
+            </li>
+            
+            
+             
+             <li><a onclick="clear1()">Logout</a></li>
+            </ul>
+          
+        
+           <form class="navbar-form pull-right" role="search">
+      
+       <div class="input-group">
+           <input type="text" class="form-control largrScreen" placeholder="Search this Site" name="srchLarge" id="srch-term">
+           <div class="input-group-btn">
+               <button type="button" class="btn btn-default" onclick="search()"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+       </div>
+ 
+        </form>  </div>
+		</nav>
+		
+		
+		
+		<nav class="navbar navbar-inverse visible-sm" role="navigation" id="mainNav">
+			<div class = "navbar-header">
+      			<a class = "navbar-brand glyphicon glyphicon-user" href = "assignment3.html"></a>
+   			</div>
+   			
+   			<div>
+      			<ul class = "nav navbar-nav">
+		         <li class = "active"><a onclick="clear1()" class="glyphicon glyphicon-home"></a></li>
+		         <li><a onclick="clear1()" class="glyphicon glyphicon-edit"></a></li>
+		          <li><a onclick="clear1()" class="glyphicon glyphicon-phone-alt"></a></li>
+		          <li><a href = "movieForm.html" class="glyphicon glyphicon-pencil"></a></li>
+            	 <li><a onclick="reviews()" class="glyphicon glyphicon-comment"></a></li>
+		            <li class = "dropdown">
+            <a class = "dropdown-toggle glyphicon glyphicon-menu-hamburger" data-toggle = "dropdown"> 
+               <b class = "caret"></b>
+            </a>
+            
+            <ul class = "dropdown-menu">
+               		<li><a onclick="clear1()">Button</a></li>
+               		<li class = "divider"></li>
+                	<li><a onclick="clear1()">Panel</a></li>
+               		<li><a onclick="clear1()">Grid</a></li>
+               
+               		<li class = "divider"></li>
+               		<li><a onclick="clear1()">Link</a></li>
+                	<li><a onclick="clear1()">Pagination</a></li>
+            
+	            	<li class = "divider"></li>
+	               <li><a onclick="clear1()">Progress Bar</a></li>
+	          </ul>
+            </li>
+            
+            
+             
+             <li><a onclick="clear1()" class="glyphicon glyphicon-off"></a></li>
+             </ul>
+             </div>
+                 <form class="navbar-form pull-right" role="search">
+       <div class="input-group">
+           <input type="text" class="form-control" placeholder="Search this Site" name="srchSmall" id="srchSmall">
+           <div class="input-group-btn">
+               <button class="btn btn-default" type="button" onclick="searchForSmall()"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+       </div>
+       </form>
+		</nav>	
+	</div>
+	<div id="content">
+		<table id="movieTable" class="table table-hover table-bordered">
+			
+		</table>
+	</div>
+</body>
+</html>
