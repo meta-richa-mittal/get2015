@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Review Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+.back {
+	
+	padding: 20px;
+}
+
+body {
+	padding-top: 40px;
+}
+
+.glyphicon {
+	font-size: 40px;
+}
+
+div#close {
+	padding-right: 30px;
+	font-weight: bold;
+	font-size: large;
+}
+</style>
+</head>
+<body>
+<div id="close" class="text-right"><a href="assignment3.html">Close</a></div>
+<div class="text-center hidden-xs"><h2>Review Form</h2></div>
+	<div class="container-fluid well">
+	
+	<div class="glyphicon glyphicon-facetime-video hidden-lg hidden-md hidden-sm"></div>
+		<form role="form" class="form-horizontal back">
+			<div class="form-group">
+				<label for="title" class="col-lg-1 col-md-1 col-sm-4 hidden-xs">Movie Title</label>
+				<div class="col-lg-5 col-md-5 col-sm-8">
+				<input type="text" class="form-control" id="title" placeholder="Enter Title">
+			</div>
+			
+				<label for="genre" class="col-lg-1 col-md-1 col-sm-4 hidden-xs">Genre</label>
+				<div class="col-lg-5 col-md-5 col-sm-8">
+				<select class="form-control">
+					<option selected="selected" disabled="disabled">Choose a Genre</option>
+					<option>Action</option>
+					<option>Cartoon</option>
+					<option>Comedy</option>
+					<option>Fantasy</option>
+					<option>Horror</option>
+					<option>Musicals</option>
+					<option>Thriller</option>
+					<option>War</option>
+				</select>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="director" class="col-lg-1 col-md-1 col-sm-4 col-xs-12 hidden-xs">Director</label>
+				<div class="col-lg-2 col-md-5 col-sm-8 col-xs-12">
+					<input type="text" class="form-control" id="director" placeholder="Enter Director">
+				</div>
+				
+				<label for="writer" class="col-lg-1 col-md-1 col-sm-4 col-xs-12 hidden-xs">Writer</label>
+				<div class="col-lg-2 col-md-5 col-sm-8 col-xs-12">
+					<input type="text" class="form-control" id="writer" placeholder="Enter Writer">
+				</div>
+				
+				<label for="producer" class="col-lg-1 col-md-1 col-sm-4 col-xs-12 hidden-xs">Producer</label>
+				<div class="col-lg-2 col-md-5 col-sm-8 col-xs-12">
+					<input type="text" class="form-control" id="producer" placeholder="Enter Producer">
+				</div>
+				
+				<label for="composer" class="col-lg-1 col-md-1 col-sm-4 col-xs-12 hidden-xs">Composer</label>
+				<div class="col-lg-2 col-md-5 col-sm-8 col-xs-12">
+					<input type="text" class="form-control" id="composer" placeholder="Enter Composer">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="website" class="col-lg-1 col-md-1 col-sm-4 col-xs-12 hidden-xs">Website</label>
+				<div class="col-lg-5 col-md-5 col-sm-8 col-xs-12">
+					<input type="text" class="form-control" id="website" placeholder="Enter Website">
+				</div>
+				
+				<label for="trailer" class="col-lg-1 col-md-1 col-sm-4 col-xs-12 hidden-xs">Youtube Trailer</label>
+				<div class="col-lg-5 col-md-5 col-sm-8 col-xs-12">
+					<input type="text" class="form-control" id="trailer" placeholder="Enter Youtube Trailer">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="review" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-xs">Review</label>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<textarea class="form-control" id="website" rows="5" placeholder="Enter Reviews"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="rating" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-xs">Rating</label>
+				
+				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+					<label class="text-warning"><input type="radio" class="rating" id="terrible">Terrible</label>
+				</div>
+				
+				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+					<label class="text-info"><input type="radio" class="rating" id="watchable">Watchable</label>
+				</div>
+				
+				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+					<label class="text-success"><input type="radio" class="rating" id="best">Best Ever</label>
+				</div>
+			</div>
+			
+			<div class="form-group">
+			<div class="col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<button type="button" class="btn btn-default">Cancel</button>
+					<button type="button" class="btn btn-primary">Validate</button>
+					<button type="button" class="btn btn-success">Submit</button>
+					<button type="button" class="btn btn-danger">Delete</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 3</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="script.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar navbar-inverse hidden-sm " role="navigation" id="mainNav">
+			<div class = "navbar-header">
+			
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      			<a style="width: 100px;" onclick="clear1()" class = "navbar-brand" href = "assignment3.html">Metacube</a>
+   			</div>
+   			
+   			<div class="collapse navbar-collapse " id="myNavbar">
+      			<ul class = "nav navbar-nav">
+		         <li class = "active"><a onclick="clear1()">Home</a></li>
+		         <li><a onclick="clear1()">About</a></li>
+		          <li><a onclick="clear1()" id="contact">Contact Us</a></li>
+		          <li><a href = "movieForm.html">Movie Form</a></li>
+            	 <li><a onclick="reviews()" id="review">Movie Reviews</a></li>
+		            <li class = "dropdown">
+            <a class = "dropdown-toggle" data-toggle = "dropdown">
+               CSS 
+               <b class = "caret"></b>
+            </a>
+            
+            <ul class = "dropdown-menu">
+               		<li><a onclick="clear1()">Button</a></li>
+               		<li class = "divider"></li>
+                	<li><a onclick="clear1()">Panel</a></li>
+               		<li><a onclick="clear1()">Grid</a></li>
+               
+               		<li class = "divider"></li>
+               		<li><a onclick="clear1()">Link</a></li>
+                	<li><a onclick="clear1()">Pagination</a></li>
+            
+	            	<li class = "divider"></li>
+	               <li><a onclick="clear1()">Progress Bar</a></li>
+	          </ul>
+            </li>
+            
+            
+             
+             <li><a onclick="clear1()">Logout</a></li>
+            </ul>
+          
+        
+           <form class="navbar-form pull-right" role="search">
+      
+       <div class="input-group">
+           <input type="text" class="form-control largrScreen" placeholder="Search this Site" name="srchLarge" id="srch-term">
+           <div class="input-group-btn">
+               <button type="button" class="btn btn-default" onclick="search()"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+       </div>
+ 
+        </form>  </div>
+		</nav>
+		
+		
+		
+		<nav class="navbar navbar-inverse visible-sm" role="navigation" id="mainNav">
+			<div class = "navbar-header">
+      			<a class = "navbar-brand glyphicon glyphicon-user" href = "assignment3.html"></a>
+   			</div>
+   			
+   			<div>
+      			<ul class = "nav navbar-nav">
+		         <li class = "active"><a onclick="clear1()" class="glyphicon glyphicon-home"></a></li>
+		         <li><a onclick="clear1()" class="glyphicon glyphicon-edit"></a></li>
+		          <li><a onclick="clear1()" class="glyphicon glyphicon-phone-alt"></a></li>
+		          <li><a href = "movieForm.html" class="glyphicon glyphicon-pencil"></a></li>
+            	 <li><a onclick="reviews()" class="glyphicon glyphicon-comment"></a></li>
+		            <li class = "dropdown">
+            <a class = "dropdown-toggle glyphicon glyphicon-menu-hamburger" data-toggle = "dropdown"> 
+               <b class = "caret"></b>
+            </a>
+            
+            <ul class = "dropdown-menu">
+               		<li><a onclick="clear1()">Button</a></li>
+               		<li class = "divider"></li>
+                	<li><a onclick="clear1()">Panel</a></li>
+               		<li><a onclick="clear1()">Grid</a></li>
+               
+               		<li class = "divider"></li>
+               		<li><a onclick="clear1()">Link</a></li>
+                	<li><a onclick="clear1()">Pagination</a></li>
+            
+	            	<li class = "divider"></li>
+	               <li><a onclick="clear1()">Progress Bar</a></li>
+	          </ul>
+            </li>
+            
+            
+             
+             <li><a onclick="clear1()" class="glyphicon glyphicon-off"></a></li>
+             </ul>
+             </div>
+                 <form class="navbar-form pull-right" role="search">
+       <div class="input-group">
+           <input type="text" class="form-control" placeholder="Search this Site" name="srchSmall" id="srchSmall">
+           <div class="input-group-btn">
+               <button class="btn btn-default" type="button" onclick="searchForSmall()"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+       </div>
+       </form>
+		</nav>	
+	</div>
+	<div id="content">
+		<table id="movieTable" class="table table-hover table-bordered">
+			
+		</table>
+	</div>
+</body>
+</html>
