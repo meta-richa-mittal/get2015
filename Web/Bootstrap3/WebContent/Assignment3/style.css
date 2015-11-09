@@ -6,6 +6,12 @@
 	width: 80%;
 }
 #header {
-	color: #00BFFF;
+	color: maroon;
 }
+
+.modal-header  {
+   background-color: blue;
+   color: white;
+}
+
 
