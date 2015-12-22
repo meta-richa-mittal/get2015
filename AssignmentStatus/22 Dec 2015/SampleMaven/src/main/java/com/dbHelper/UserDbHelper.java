@@ -13,10 +13,9 @@ public class UserDbHelper {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Transactional
+	
 	public boolean insert(User user) {
 		System.out.println("fbsb  = "+sessionFactory);
-		
 		Session session = sessionFactory.getCurrentSession();
 		System.out.println("db"+ user);
 		int i = (Integer) session.save(user);
