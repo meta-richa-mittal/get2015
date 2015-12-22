@@ -1,34 +1,21 @@
 package com.dbHelper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.model.User;
 
 @Service
+@Transactional
 public class dbService {
 	
+	@Autowired
+	private UserDbHelper userDbHelper;
 	
-
-	//private SessionFactory sessionFactory = null;
-
-	//@Transactional
 	public boolean insert(User user) {
 		boolean flag = false;
-		UserFacade iUserFacade = new UserFacade();
-		flag = iUserFacade.insert(user);
-		
-		//Transaction transaction = null;		
-			/*System.out.println("in service "+ sessionFactory);
-			session = sessionFactory.openSession();*/
-			
-			//sessionFactory = SessionFactoryUtil.getConfigurationInstance();
-		//session = sessionFactory.openSession();
-		//	transaction = session.beginTransaction();
-			//System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa"+ user);
-			
-	//		transaction.commit();
-		
+		flag = userDbHelper.insert(user);
 		return flag;
 	}
 }
