@@ -15,9 +15,7 @@ public class UserDbHelper {
 	private SessionFactory sessionFactory;
 	
 	public boolean insert(User user) {
-		System.out.println("fbsb  = "+sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("db"+ user);
 		int i = (Integer) session.save(user);
 		if(i!=0){
 			return true;
